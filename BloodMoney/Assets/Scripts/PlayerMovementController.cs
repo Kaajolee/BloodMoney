@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void RotateCharacter()
     {
-        Debug.Log(moveDirection);
+        //Debug.Log(moveDirection);
         if (moveDirection != Vector2.zero)
         {
             Quaternion toRotate = Quaternion.LookRotation(Vector3.forward, moveDirection);

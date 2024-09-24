@@ -13,7 +13,7 @@ public class GlobalEvents : MonoBehaviour
     {
         get
         {
-            if(_instance != null)
+            if(_instance == null)
             {
                 Debug.LogError("Global events is null");
             }

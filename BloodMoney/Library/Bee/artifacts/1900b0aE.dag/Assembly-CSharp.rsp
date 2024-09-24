@@ -393,8 +393,10 @@
 "Assets/Scripts/EnemyHealthController.cs"
 "Assets/Scripts/GlobalEvents.cs"
 "Assets/Scripts/HealthLabelUpdate.cs"
+"Assets/Scripts/MenuManager.cs"
 "Assets/Scripts/PlayerHealthController.cs"
 "Assets/Scripts/PlayerMovementController.cs"
+"Assets/Scripts/Slots/TextRandomizer.cs"
 -langversion:9.0
 
 /deterministic
