@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638627605613472188
-    m_Hash: 3287359312
+      ticks: 638627858822513456
+    m_Hash: 2647634176
   m_LockFileStatus:
     m_FilePath: C:/Users/Karolis/Documents/GitHub/BloodMoney/BloodMoney/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638627605613559095
-    m_Hash: 4033779755
+      ticks: 638627858822523432
+    m_Hash: 1691286352
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
