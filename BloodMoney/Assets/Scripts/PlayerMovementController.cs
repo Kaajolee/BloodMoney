@@ -9,13 +9,15 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRB;
 
     [SerializeField]
-    private float moveSpeed;
+    private float moveSpeed, rotationSpeed;
 
     [SerializeField]
     private bool isMobileEnabled;
 
     [SerializeField]
     private float horitontalInput, verticalInput;
+
+    private Vector2 moveDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         ReadInputs();
         MoveCharacter();
-        //RotateCharacter();
+        RotateCharacter();
     }
     public void ReadInputs()
     {
@@ -37,19 +39,19 @@ public class PlayerMovement : MonoBehaviour
     }
     public void MoveCharacter()
     {
-        Vector2 moveDirection = new Vector2(horitontalInput, verticalInput) * moveSpeed * Time.deltaTime;
+        moveDirection = new Vector2(horitontalInput, verticalInput);
+        moveDirection.Normalize();
 
-        transform.Translate(moveDirection);
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
     }
     public void RotateCharacter()
     {
-        if (horitontalInput != 0 || verticalInput != 0)
+        Debug.Log(moveDirection);
+        if (moveDirection != Vector2.zero)
         {
-            Vector2 moveDirection = new Vector2(horitontalInput, verticalInput);
+            Quaternion toRotate = Quaternion.LookRotation(Vector3.forward, moveDirection);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.deltaTime);
 
-            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-
-            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
