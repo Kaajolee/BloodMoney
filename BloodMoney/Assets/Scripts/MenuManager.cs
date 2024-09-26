@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject inGameCanvas, mainMenu, options,credits,shop,upgrades,casino,trophies;
+    public GameObject mainMenu, options,credits,shop,upgrades,casino,trophies;
 
 
     void Start()
     {
         HideAllPanels();
         mainMenu.SetActive(true);
-        inGameCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,8 +46,8 @@ public class MenuManager : MonoBehaviour
     }
     public void PlayButtonPressed()
     {
-        HideAllPanels();
-        inGameCanvas.SetActive(true);
+       // HideAllPanels();
+        SceneManager.LoadScene("Geimas");
 
     }
 
