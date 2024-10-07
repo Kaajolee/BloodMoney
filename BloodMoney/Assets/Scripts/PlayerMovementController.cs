@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,12 +48,15 @@ public class PlayerMovement : MonoBehaviour
     public void RotateCharacter()
     {
         //Debug.Log(moveDirection);
-        if (moveDirection != Vector2.zero)
+        /*if (moveDirection != Vector2.zero)
         {
             Quaternion toRotate = Quaternion.LookRotation(Vector3.forward, moveDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.deltaTime);
 
-        }
+        }*/
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.up = mousePos - new Vector2(transform.position.x, transform.position.y);
+
     }
 
 

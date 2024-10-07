@@ -413,6 +413,7 @@
 "Assets/Scripts/PlayerHealthController.cs"
 "Assets/Scripts/PlayerMovementController.cs"
 "Assets/Scripts/Slots/TextRandomizer.cs"
+"Assets/Scripts/Slots/WinLoseCalculator.cs"
 -langversion:9.0
 
 /deterministic

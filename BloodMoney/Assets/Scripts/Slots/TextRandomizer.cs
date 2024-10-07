@@ -24,5 +24,6 @@ public class TextRandomizer : MonoBehaviour
         {
             textComponents[i].text = numbers[Random.Range(0, numbers.Length - 1)];
         }
+        GlobalEvents.Instance.SpinClicked();
     }
 }

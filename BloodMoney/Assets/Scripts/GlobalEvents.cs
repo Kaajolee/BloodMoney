@@ -23,6 +23,7 @@ public class GlobalEvents : MonoBehaviour
 
     public delegate void GameEventHandler();
     public event GameEventHandler HealthAmountChanged;
+    public event GameEventHandler SlotSpinClicked;
 
     private void Awake()
     {
@@ -32,5 +33,9 @@ public class GlobalEvents : MonoBehaviour
     public void HealthChanged()
     {
         HealthAmountChanged?.Invoke();
+    }
+    public void SpinClicked()
+    {
+        SlotSpinClicked?.Invoke();
     }
 }
