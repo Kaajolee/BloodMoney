@@ -407,13 +407,17 @@
 "Assets/Scripts/BulletMoveScript.cs"
 "Assets/Scripts/EnemyScripts/EnemyAI.cs"
 "Assets/Scripts/EnemyScripts/EnemyHealthController.cs"
+"Assets/Scripts/Events/CombatEvents.cs"
+"Assets/Scripts/Events/UIEvents.cs"
 "Assets/Scripts/GlobalEvents.cs"
-"Assets/Scripts/HealthLabelUpdate.cs"
+"Assets/Scripts/KeybindController.cs"
 "Assets/Scripts/MenuManager.cs"
 "Assets/Scripts/PlayerHealthController.cs"
 "Assets/Scripts/PlayerMovementController.cs"
+"Assets/Scripts/Shop/TriggerScript.cs"
 "Assets/Scripts/Slots/TextRandomizer.cs"
 "Assets/Scripts/Slots/WinLoseCalculator.cs"
+"Assets/Scripts/UILabelUpdate.cs"
 -langversion:9.0
 
 /deterministic

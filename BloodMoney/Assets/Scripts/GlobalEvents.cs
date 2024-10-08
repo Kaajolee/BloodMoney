@@ -24,6 +24,8 @@ public class GlobalEvents : MonoBehaviour
     public delegate void GameEventHandler();
     public event GameEventHandler HealthAmountChanged;
     public event GameEventHandler SlotSpinClicked;
+    public event GameEventHandler EnemyDied;
+    public event GameEventHandler EndWave;
 
     private void Awake()
     {
@@ -37,5 +39,13 @@ public class GlobalEvents : MonoBehaviour
     public void SpinClicked()
     {
         SlotSpinClicked?.Invoke();
+    }
+    public void EnemyKilled()
+    {
+        EnemyDied?.Invoke();
+    }
+    public void WaveEnded()
+    {
+        EndWave?.Invoke();
     }
 }

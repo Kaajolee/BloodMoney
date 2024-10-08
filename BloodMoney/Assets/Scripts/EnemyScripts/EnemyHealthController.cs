@@ -31,6 +31,7 @@ public class EnemyHealthController : MonoBehaviour
     public void Die()
     {
         PlayerHealthController.Instance.GainHealth(maxHealth / 10);
+        GlobalEvents.Instance.EnemyKilled();
         Destroy(gameObject);
     }
 }
