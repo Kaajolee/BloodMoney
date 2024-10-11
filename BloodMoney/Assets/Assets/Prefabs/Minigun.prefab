@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de014c87c85e6c64797533838536ad33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.87
+      value: 9.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de014c87c85e6c64797533838536ad33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1106
+      value: 4.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de014c87c85e6c64797533838536ad33, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.878
+      value: -75.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de014c87c85e6c64797533838536ad33, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68,8 +68,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Minigun
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de014c87c85e6c64797533838536ad33, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de014c87c85e6c64797533838536ad33, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7819850996575218997}
   m_SourcePrefab: {fileID: 100100000, guid: de014c87c85e6c64797533838536ad33, type: 3}
+--- !u!1 &5739428994044808790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de014c87c85e6c64797533838536ad33, type: 3}
+  m_PrefabInstance: {fileID: 4857103142792426247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7819850996575218997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5739428994044808790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 925c037490e047548a2a1fd2bb3c56eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationIncrement: 0
