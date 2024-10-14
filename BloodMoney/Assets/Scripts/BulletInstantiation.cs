@@ -13,6 +13,11 @@ public class BulletInstantiation : MonoBehaviour
 
     [SerializeField]
     private float destroyTime;
+
+    [SerializeField]
+    private float attackSpeed;
+
+    private Coroutine shootingCoroutine;
     void Start()
     {
         
@@ -21,19 +26,36 @@ public class BulletInstantiation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            InstantiateBullet();
+            if(shootingCoroutine == null)
+                shootingCoroutine = StartCoroutine(InstantiateBullet(attackSpeed));
+        }
+
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            if (shootingCoroutine != null)
+            {
+                StopCoroutine(shootingCoroutine);
+                shootingCoroutine = null;
+            }
+                
         }
     }
-    public void InstantiateBullet()
+    public IEnumerator InstantiateBullet(float attackSpeed)
     {
-        GameObject instantiatedBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-        BulletMoveScript bulletScript = GetComponent<BulletMoveScript>();
-        if(bulletScript != null)
+        
+        while (true)
         {
-            bulletScript.SetDirection(bulletSpawnPoint.up);
+            GameObject instantiatedBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            BulletMoveScript bulletScript = GetComponent<BulletMoveScript>();
+            if (bulletScript != null)
+            {
+                bulletScript.SetDirection(bulletSpawnPoint.up);
+            }
+            Destroy(instantiatedBullet, destroyTime);
+            yield return new WaitForSeconds(1 / attackSpeed);
         }
-        Destroy(instantiatedBullet, destroyTime);
+
     }
 }
