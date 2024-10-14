@@ -7,16 +7,33 @@ using UnityEngine.UIElements;
 public class CameraTransition : MonoBehaviour
 {
     [SerializeField]
-    private Transform[] CameraPositions;
+    private Transform[] WeaponPositions;
+
+    [SerializeField]
+    private Transform[] GrenadePositions;
+
+    [SerializeField]
+    private Transform[] SpecialPositions;
+
+    [SerializeField]
+    private Transform[] CurrentPositions;
+
+
     int index;
     public float transitionTime;
 
     [SerializeField]
     private ShopDataController shopDataController;
+
+    private bool transitionEnded;
     void Start()
     {
+        CurrentPositions = WeaponPositions;
+        transitionEnded = true;
         index = 0;
-        MoveCameraTo(CameraPositions[0]);
+
+        MoveCameraTo(CurrentPositions[0]);
+        shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
     }
     public void MoveCameraTo(Transform whereToMove)
     {
@@ -45,29 +62,72 @@ public class CameraTransition : MonoBehaviour
         Debug.Log("Camera moved to " + whereToMove);
         Debug.Log("Camera rotated to " + rotateTo);
 
+        transitionEnded = true;
+
     }
     public void MoveLeft()
     {
-        if(index == 0)
+        if (transitionEnded)
         {
-            index = CameraPositions.Length - 1;
-        }
-        else
-        index--;
+            if (index == 0)
+            {
+                index = CurrentPositions.Length - 1;
+            }
+            else
+                index--;
 
-        MoveCameraTo(CameraPositions[index]);
-        shopDataController.ChangeData((Weapon)CameraPositions[index].gameObject.GetComponent<DataHolder>().DataObject);
+            transitionEnded = false;
+            MoveCameraTo(CurrentPositions[index]);
+            shopDataController.ChangeData((Weapon)CurrentPositions[index].gameObject.GetComponent<DataHolder>().DataObject);
+        }
     }
     public void MoveRight()
     {
-        if (index == CameraPositions.Length - 1)
+        if (transitionEnded)
         {
-            index = 0;
+            if (index == CurrentPositions.Length - 1)
+            {
+                index = 0;
+            }
+            else
+                index++;
+            transitionEnded = false;
+            MoveCameraTo(CurrentPositions[index]);
+            shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
         }
-        else
-        index++;
+    }
+    public void WeaponsClicked()
+    {
+        if (CurrentPositions != WeaponPositions)
+        {
+            CurrentPositions = WeaponPositions;
+            index = 0;
+            MoveCameraTo(WeaponPositions[0]);
+            shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
+        }
 
-        MoveCameraTo(CameraPositions[index]);
-        shopDataController.ChangeData((Weapon)CameraPositions[index].gameObject.GetComponent<DataHolder>().DataObject);
+    }
+    public void ThrowablesClicked()
+    {
+        if (CurrentPositions != GrenadePositions)
+        {
+            CurrentPositions = GrenadePositions;
+            index = 0;
+            MoveCameraTo(GrenadePositions[0]);
+            shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
+        }
+            
+    }
+    public void SpecialsClicked()
+    {
+        if(CurrentPositions != SpecialPositions)
+        {
+            CurrentPositions = GrenadePositions;
+            index = 0;
+            MoveCameraTo(SpecialPositions[0]);
+            shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
+        }
+            
+
     }
 }

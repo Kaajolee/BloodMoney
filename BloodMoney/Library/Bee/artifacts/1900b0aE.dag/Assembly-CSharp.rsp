@@ -419,10 +419,10 @@
 "Assets/Scripts/Shop/ShopDataController.cs"
 "Assets/Scripts/Shop/TriggerScript.cs"
 "Assets/Scripts/Shop/WeaponData/Weapon.cs"
+"Assets/Scripts/Shop/WeaponRotation.cs"
 "Assets/Scripts/Slots/TextRandomizer.cs"
 "Assets/Scripts/Slots/WinLoseCalculator.cs"
 "Assets/Scripts/UILabelUpdate.cs"
-"Assets/Scripts/WeaponRotation.cs"
 -langversion:9.0
 
 /deterministic
