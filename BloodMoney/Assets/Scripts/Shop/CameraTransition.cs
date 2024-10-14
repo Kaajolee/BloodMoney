@@ -122,7 +122,7 @@ public class CameraTransition : MonoBehaviour
     {
         if(CurrentPositions != SpecialPositions)
         {
-            CurrentPositions = GrenadePositions;
+            CurrentPositions = SpecialPositions;
             index = 0;
             MoveCameraTo(SpecialPositions[0]);
             shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
