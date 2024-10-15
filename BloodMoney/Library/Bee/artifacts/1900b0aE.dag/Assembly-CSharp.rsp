@@ -423,6 +423,10 @@
 "Assets/Scripts/Slots/TextRandomizer.cs"
 "Assets/Scripts/Slots/WinLoseCalculator.cs"
 "Assets/Scripts/UILabelUpdate.cs"
+"Assets/Scripts/WeaponBehaviour/HandgunBehaviour.cs"
+"Assets/Scripts/WeaponBehaviour/IWeaponBehaviour.cs"
+"Assets/Scripts/WeaponBehaviour/ShotgunBehaviour.cs"
+"Assets/Scripts/WeaponSystem.cs"
 -langversion:9.0
 
 /deterministic

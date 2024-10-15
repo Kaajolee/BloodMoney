@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151e5cbfa559a80418f21d893781b502, type: 3}
   m_Name: GasGrenade
   m_EditorClassIdentifier: 
-  GunName: Gas grenade
-  GunDamage: 30
-  GunPrice: 1250
-  GunFirerate: 1
+  weaponName: Gas grenade
+  weaponDamage: 30
+  weaponPrice: 1000
+  bulletsPerShot: 1
+  weaponFirerate: 1
+  spreadAngle: 0
+  isPurchased: 0
+  isEquiped: 0
+  bulletPrefab: {fileID: 0}
+  weaponType: 4

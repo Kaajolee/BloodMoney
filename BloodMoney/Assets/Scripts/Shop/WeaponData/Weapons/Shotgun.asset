@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151e5cbfa559a80418f21d893781b502, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  GunName: Shotgun
-  GunDamage: 50
-  GunPrice: 1000
-  GunFirerate: 1
+  weaponName: Shotgun
+  weaponDamage: 80
+  weaponPrice: 2500
+  bulletsPerShot: 5
+  weaponFirerate: 0.5
+  spreadAngle: 1
+  isPurchased: 1
+  isEquiped: 1
+  bulletPrefab: {fileID: 6155541213819227482, guid: 8a3067702bbf19840b68d7f62021c9d0, type: 3}
+  weaponType: 2

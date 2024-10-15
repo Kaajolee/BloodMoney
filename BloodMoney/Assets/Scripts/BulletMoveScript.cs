@@ -26,6 +26,10 @@ public class BulletMoveScript : MonoBehaviour
     {
         direction = setDirection.normalized;
     }
+    public void SetDamage(float damage)
+    {
+        bulletDamage = damage;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -45,6 +49,7 @@ public class BulletMoveScript : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             EnemyHealthController enemyHealthController = collision.gameObject.GetComponent<EnemyHealthController>();
+            Debug.Log("Damage done: " + bulletDamage);
             DoDamage(enemyHealthController);
             Destroy(gameObject);
         }

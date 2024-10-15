@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151e5cbfa559a80418f21d893781b502, type: 3}
   m_Name: Nuke
   m_EditorClassIdentifier: 
-  GunName: Nuclear bomb
-  GunDamage: 10000
-  GunPrice: 25000
-  GunFirerate: 1
+  weaponName: Nuke
+  weaponDamage: 1500
+  weaponPrice: 13000
+  bulletsPerShot: 1
+  weaponFirerate: 1
+  spreadAngle: 0
+  isPurchased: 0
+  isEquiped: 0
+  bulletPrefab: {fileID: 0}
+  weaponType: 5

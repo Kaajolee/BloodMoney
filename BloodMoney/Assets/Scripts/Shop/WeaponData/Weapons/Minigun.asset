@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151e5cbfa559a80418f21d893781b502, type: 3}
   m_Name: Minigun
   m_EditorClassIdentifier: 
-  GunName: Minigun
-  GunDamage: 30
-  GunPrice: 10000
-  GunFirerate: 20
+  weaponName: Minigun
+  weaponDamage: 25
+  weaponPrice: 10000
+  bulletsPerShot: 1
+  weaponFirerate: 10
+  spreadAngle: 0
+  isPurchased: 0
+  isEquiped: 0
+  bulletPrefab: {fileID: 6155541213819227482, guid: 8a3067702bbf19840b68d7f62021c9d0, type: 3}
+  weaponType: 3
