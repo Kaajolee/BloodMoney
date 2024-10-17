@@ -17,26 +17,58 @@ public class ShopDataController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI buyButtonText, sellButtonText, equipButtonText;
 
-    [SerializeField]
-    private Weapon currentWeapon;
+
+
 
     [SerializeField]
     private WeaponSystem weaponSystem;
 
+    [SerializeField]
+    private Weapon currentWeapon;
+
+    [SerializeField]
+    private Weapon equipedWeapon;
+
+    [SerializeField]
+    private Weapon[] gunsData, throwablesData, specialsData;
+
+
+    [SerializeField]
+    private Transform[] weaponClassParents;
+
     private void Start()
     {
-
+        gunsData = SetInitialData(weaponClassParents[0]);
+        throwablesData = SetInitialData(weaponClassParents[1]);
+        specialsData = SetInitialData(weaponClassParents[3]);
     }
-    public void ChangeData(Weapon weaponData)
+    public void ChangeData(WeaponClass weaponClass, int index)
     {
-        currentWeapon = weaponData;
+        switch (weaponClass)
+        {
+            case WeaponClass.None:
 
-        GunName.text = weaponData.weaponName;
-        GunDamage.text = "Damage: " + weaponData.weaponDamage.ToString();
-        GunPrice.text = "Price: " + weaponData.weaponPrice.ToString();
-        GunFirerate.text = "Firerate: " + weaponData.weaponFirerate.ToString();
+                break;
 
-        ToggleButtons(weaponData);
+
+            case WeaponClass.Gun:
+                currentWeapon = gunsData[index];
+                break;
+
+
+            case WeaponClass.Throwable:
+                currentWeapon = throwablesData[index];
+                break;
+
+
+            case WeaponClass.Special:
+                currentWeapon = specialsData[index];
+                break;
+        }
+
+        ChangeUIText(currentWeapon);
+
+        ToggleButtons(currentWeapon);
 
     }
     public void ToggleButtons(Weapon weaponData)
@@ -61,6 +93,13 @@ public class ShopDataController : MonoBehaviour
             equipButtonText.text = "Equip";
         }
     }
+    public void ChangeUIText(Weapon weaponData)
+    {
+        GunName.text = weaponData.weaponName;
+        GunDamage.text = "Damage: " + weaponData.weaponDamage.ToString();
+        GunPrice.text = "Price: " + weaponData.weaponPrice.ToString();
+        GunFirerate.text = "Firerate: " + weaponData.weaponFirerate.ToString();
+    }
     public void SellWeaponClicked()
     {
         currentWeapon.isPurchased = false;
@@ -81,9 +120,35 @@ public class ShopDataController : MonoBehaviour
     public void EquipWeaponClicked()
     {
         currentWeapon.isEquiped = !currentWeapon.isEquiped;
+
         weaponSystem.weaponData = currentWeapon;
         weaponSystem.SetWeaponBehaviour(currentWeapon);
         ChangeData(currentWeapon);
         ToggleButtons(currentWeapon);
+    }
+    public void UnequipOtherItems(Weapon[] dataArray, Weapon equipedWeapon)
+    {
+
+        //problema: equip/unequip neveikia, kaip atskirti change data kad nedarytu per daug
+        foreach (var item in dataArray)
+        {
+            item.isEquiped = false;
+        }
+        equipedWeapon.isEquiped = true;
+    }
+    public Weapon[] SetInitialData(Transform weaponClassParent)
+    {
+        DataHolder[] dataHolders = weaponClassParent.GetComponentsInChildren<DataHolder>();
+        
+        Weapon[] arrayToFill = new Weapon[dataHolders.Length];
+
+        for (int i = 0; i < dataHolders.Length; i++)
+        {
+            if (dataHolders[i].DataObject is Weapon weapon)
+                arrayToFill[i] = weapon;
+            else
+                Debug.LogWarning("Data holder is not of type Weapon");
+        }
+        return arrayToFill;
     }
 }

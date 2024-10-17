@@ -44,19 +44,19 @@ public class WeaponSystem : MonoBehaviour
     {
         switch (weaponData.weaponType)
         {
-            case Weapon.WeaponType.None:
+            case WeaponType.None:
                 //currentWeaponBehaviour = ne
                 break;
-            case Weapon.WeaponType.Handgun:
+            case WeaponType.Handgun:
                 currentWeaponBehaviour = new HandgunBehaviour();
                 break;
-            case Weapon.WeaponType.Automatic:
+            case WeaponType.Automatic:
 
                 break;
-            case Weapon.WeaponType.Shotgun:
+            case WeaponType.Shotgun:
                 currentWeaponBehaviour = new ShotgunBehaviour();
                 break;
-            case Weapon.WeaponType.Special:
+            case WeaponType.Special:
 
                 break;
 

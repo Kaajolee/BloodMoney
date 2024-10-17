@@ -24,6 +24,7 @@ public class UIEvents : MonoBehaviour
     public delegate void UIEventsHandler();
     public event UIEventsHandler HealthAmountChanged; // test
     public event UIEventsHandler ShopTriggered; // test
+    public event UIEventsHandler WeaponEquiped; // test
 
     private void Awake()
     {
@@ -32,5 +33,9 @@ public class UIEvents : MonoBehaviour
     public void PlayerTriggeredShop()
     {
         ShopTriggered?.Invoke();
+    }
+    public void PlayerEquipedWeapon()
+    {
+        WeaponEquiped?.Invoke();
     }
 }
