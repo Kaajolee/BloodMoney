@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 public class CameraTransition : MonoBehaviour
 {
@@ -18,22 +15,28 @@ public class CameraTransition : MonoBehaviour
     [SerializeField]
     private Transform[] CurrentPositions;
 
-
+    private UIEvents UIEvents;
     int index;
     public float transitionTime;
 
-    [SerializeField]
-    private ShopDataController shopDataController;
 
-    private bool transitionEnded;
+    public bool transitionEnded;
     void Start()
     {
+        this.UIEvents = UIEvents.Instance;
         CurrentPositions = WeaponPositions;
         transitionEnded = true;
         index = 0;
 
-        MoveCameraTo(CurrentPositions[0]);
-        shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
+        /*UIEvents.ShopMoveLeftClicked += MoveLeft;
+        UIEvents.ShopMoveRightClicked += MoveRight;
+
+        UIEvents.ShopWeaponsClicked += WeaponsClicked;
+        UIEvents.ShopThrowablesClicked += ThrowablesClicked;
+        UIEvents.ShopSpecialsClicked += SpecialsClicked;*/
+
+
+        MoveCameraTo(CurrentPositions[index]);
     }
     public void MoveCameraTo(Transform whereToMove)
     {
@@ -59,8 +62,8 @@ public class CameraTransition : MonoBehaviour
 
         transform.position = whereToMove;
         transform.rotation = rotateTo;
-        Debug.Log("Camera moved to " + whereToMove);
-        Debug.Log("Camera rotated to " + rotateTo);
+        //Debug.Log("Camera moved to " + whereToMove);
+        //Debug.Log("Camera rotated to " + rotateTo);
 
         transitionEnded = true;
 
@@ -78,7 +81,7 @@ public class CameraTransition : MonoBehaviour
 
             transitionEnded = false;
             MoveCameraTo(CurrentPositions[index]);
-            shopDataController.ChangeData((Weapon)CurrentPositions[index].gameObject.GetComponent<DataHolder>().DataObject);
+            
         }
     }
     public void MoveRight()
@@ -93,7 +96,7 @@ public class CameraTransition : MonoBehaviour
                 index++;
             transitionEnded = false;
             MoveCameraTo(CurrentPositions[index]);
-            shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
+            
         }
     }
     public void WeaponsClicked()
@@ -102,8 +105,8 @@ public class CameraTransition : MonoBehaviour
         {
             CurrentPositions = WeaponPositions;
             index = 0;
-            MoveCameraTo(WeaponPositions[0]);
-            shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
+            MoveCameraTo(WeaponPositions[index]);
+
         }
 
     }
@@ -113,22 +116,22 @@ public class CameraTransition : MonoBehaviour
         {
             CurrentPositions = GrenadePositions;
             index = 0;
-            MoveCameraTo(GrenadePositions[0]);
-            shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
+            MoveCameraTo(GrenadePositions[index]);
+
         }
-            
+
     }
     public void SpecialsClicked()
     {
-        if(CurrentPositions != SpecialPositions)
+        if (CurrentPositions != SpecialPositions)
         {
             CurrentPositions = SpecialPositions;
             index = 0;
-            MoveCameraTo(SpecialPositions[0]);
-            shopDataController.ChangeData((Weapon)CurrentPositions[index]?.gameObject.GetComponent<DataHolder>().DataObject);
-        }
+            MoveCameraTo(SpecialPositions[index]);
             
+        }
+
 
     }
-    
+
 }

@@ -22,9 +22,16 @@ public class UIEvents : MonoBehaviour
     }
 
     public delegate void UIEventsHandler();
-    public event UIEventsHandler HealthAmountChanged; // test
-    public event UIEventsHandler ShopTriggered; // test
-    public event UIEventsHandler WeaponEquiped; // test
+    public event UIEventsHandler HealthAmountChanged;
+    public event UIEventsHandler ShopTriggered;
+    public event UIEventsHandler WeaponEquiped;
+
+    //shop ui
+    public event UIEventsHandler ShopMoveLeftClicked;
+    public event UIEventsHandler ShopMoveRightClicked;
+    public event UIEventsHandler ShopWeaponsClicked;
+    public event UIEventsHandler ShopThrowablesClicked;
+    public event UIEventsHandler ShopSpecialsClicked;
 
     private void Awake()
     {
@@ -37,5 +44,25 @@ public class UIEvents : MonoBehaviour
     public void PlayerEquipedWeapon()
     {
         WeaponEquiped?.Invoke();
+    }
+    public void ShopLeftClicked()
+    {
+        ShopMoveLeftClicked?.Invoke();
+    }
+    public void ShopRightClicked()
+    {
+        ShopMoveRightClicked?.Invoke();
+    }
+    public void ShopWeaponsTabClicked()
+    {
+        ShopWeaponsClicked?.Invoke();
+    }
+    public void ShopThrowablesTabClicked()
+    {
+        ShopThrowablesClicked?.Invoke();
+    }
+    public void ShopSpecialsTabClicked()
+    {
+        ShopSpecialsClicked?.Invoke();
     }
 }

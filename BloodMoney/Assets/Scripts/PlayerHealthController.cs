@@ -37,10 +37,13 @@ public class PlayerHealthController : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if (health < 0)
+        Mathf.Clamp(health, 0, maxHealth);
+
+        if (health <= 0)
         {
             Die();
         }
+
         globalEvents.HealthChanged();
     }
     public void Die()
@@ -50,6 +53,7 @@ public class PlayerHealthController : MonoBehaviour
     public void GainHealth(float amount)
     {
         health += amount;
+        Mathf.Clamp(health, 0, maxHealth);
         globalEvents.HealthChanged();
     }
 }

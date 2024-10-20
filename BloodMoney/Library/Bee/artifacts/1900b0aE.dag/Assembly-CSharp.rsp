@@ -406,9 +406,12 @@
 "Assets/Scripts/BulletInstantiation.cs"
 "Assets/Scripts/BulletMoveScript.cs"
 "Assets/Scripts/DataHolder.cs"
+"Assets/Scripts/DataVault.cs"
 "Assets/Scripts/EnemyScripts/EnemyAI.cs"
 "Assets/Scripts/EnemyScripts/EnemyHealthController.cs"
+"Assets/Scripts/EquipmentController.cs"
 "Assets/Scripts/Events/CombatEvents.cs"
+"Assets/Scripts/Events/MiscEvents.cs"
 "Assets/Scripts/Events/UIEvents.cs"
 "Assets/Scripts/GlobalEvents.cs"
 "Assets/Scripts/KeybindController.cs"
@@ -417,8 +420,8 @@
 "Assets/Scripts/PlayerMovementController.cs"
 "Assets/Scripts/Shop/CameraTransition.cs"
 "Assets/Scripts/Shop/ShopDataController.cs"
+"Assets/Scripts/Shop/ShopUIController.cs"
 "Assets/Scripts/Shop/TriggerScript.cs"
-"Assets/Scripts/Shop/WeaponData/Weapon.cs"
 "Assets/Scripts/Shop/WeaponRotation.cs"
 "Assets/Scripts/Slots/TextRandomizer.cs"
 "Assets/Scripts/Slots/WinLoseCalculator.cs"
@@ -426,7 +429,8 @@
 "Assets/Scripts/WeaponBehaviour/HandgunBehaviour.cs"
 "Assets/Scripts/WeaponBehaviour/IWeaponBehaviour.cs"
 "Assets/Scripts/WeaponBehaviour/ShotgunBehaviour.cs"
-"Assets/Scripts/WeaponSystem.cs"
+"Assets/Scripts/WeaponUsageLogic.cs"
+"Assets/WeaponData/Weapon.cs"
 -langversion:9.0
 
 /deterministic
