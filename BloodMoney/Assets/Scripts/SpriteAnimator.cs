@@ -11,9 +11,16 @@ public class SpriteAnimator : MonoBehaviour
 
     public List<Sprite> sprites;
 
-
     private int index = 0;
 
+    [SerializeField]
+    private bool duringRuntime;
+
+    private void Start()
+    {
+        if(duringRuntime)
+            StartAnimation();
+    }
     private IEnumerator StartAnim()
     {
         while (true)
