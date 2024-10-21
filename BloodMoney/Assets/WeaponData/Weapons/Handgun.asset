@@ -18,9 +18,12 @@ MonoBehaviour:
   bulletsPerShot: 1
   weaponFirerate: 2
   spreadAngle: 0
-  isPurchased: 0
-  isEquiped: 0
+  explosionRadius: 0
+  isPurchased: 1
+  isEquiped: 1
   bulletPrefab: {fileID: 6155541213819227482, guid: 8a3067702bbf19840b68d7f62021c9d0, type: 3}
   weaponType: 1
   weaponClass: 1
   weaponSprite: {fileID: 21300000, guid: 39878cdf3d2a13448850878a3e671618, type: 3}
+  explosionSprites: []
+  weaponAudio: {fileID: 8300000, guid: 10ca736a3c077ab48855b96c12df0f98, type: 3}

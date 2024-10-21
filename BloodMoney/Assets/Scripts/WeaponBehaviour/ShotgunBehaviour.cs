@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShotgunBehaviour : MonoBehaviour, IWeaponBehaviour
 {
-    void IWeaponBehaviour.Shoot(Transform shootPoint, Weapon weaponData)
+    void IWeaponBehaviour.Shoot(Transform shootPoint, Weapon weaponData, AudioSource audioSource)
     {
         Quaternion newRotation = shootPoint.rotation;
         Debug.Log("Bullets: " + weaponData.bulletsPerShot);

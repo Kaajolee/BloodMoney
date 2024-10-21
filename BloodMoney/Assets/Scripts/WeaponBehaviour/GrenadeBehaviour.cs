@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GrenadeBehaviour : MonoBehaviour, IWeaponBehaviour
 {
-    public void Shoot(Transform instantiationPoint, Weapon weaponData)
+    public void Shoot(Transform instantiationPoint, Weapon weaponData, AudioSource audioSource)
     {
         if (weaponData.bulletPrefab == null)
         {

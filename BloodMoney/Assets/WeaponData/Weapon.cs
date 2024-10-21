@@ -25,6 +25,8 @@ public class Weapon : ScriptableObject
 
     public Sprite weaponSprite;
     public List<Sprite> explosionSprites;
+
+    public AudioClip weaponAudio;
 }
 public enum WeaponType
 {

@@ -26,6 +26,9 @@ public class WeaponUsageLogic : MonoBehaviour
     [Space]
     public Transform shootPoint;
 
+    [Space]
+    public AudioSource audioSource;
+
     private Coroutine shootingCoroutine;
     void Start()
     {
@@ -99,7 +102,7 @@ public class WeaponUsageLogic : MonoBehaviour
         {
             while (true)
             {
-                currentWeaponBehaviour.Shoot(shootPoint, gunData);
+                currentWeaponBehaviour.Shoot(shootPoint, gunData, audioSource);
                 yield return new WaitForSeconds(1f / gunData.weaponFirerate);
             }
         }
@@ -108,7 +111,7 @@ public class WeaponUsageLogic : MonoBehaviour
     {
         if (grenadeData != null)
         {
-            currentGrenadeBehaviour.Shoot(shootPoint, grenadeData);
+            currentGrenadeBehaviour.Shoot(shootPoint, grenadeData, audioSource);
         }
     }
 }
