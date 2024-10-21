@@ -68,7 +68,10 @@ public class ShopUIController : MonoBehaviour
             equipButton.interactable = true;
 
             if (weaponData.isEquiped)
+            {
                 equipButtonText.text = "Unequip";
+                Debug.Log("TEST");
+            }  
             else
                 equipButtonText.text = "Equip";
         }

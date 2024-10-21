@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon/Create new weapon data")]
@@ -11,6 +13,7 @@ public class Weapon : ScriptableObject
 
     public float weaponFirerate;
     public float spreadAngle;
+    public float explosionRadius;
 
     public bool isPurchased;
     public bool isEquiped;
@@ -19,6 +22,9 @@ public class Weapon : ScriptableObject
 
     public WeaponType weaponType;
     public WeaponClass weaponClass;
+
+    public Sprite weaponSprite;
+    public List<Sprite> explosionSprites;
 }
 public enum WeaponType
 {

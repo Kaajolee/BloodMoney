@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandgunBehaviour : MonoBehaviour, IWeaponBehaviour
 {
-    void IWeaponBehaviour.Shoot(Transform shootPoint, Weapon weaponData)
+    public void Shoot(Transform shootPoint, Weapon weaponData)
     {
         if(weaponData.bulletPrefab == null)
         {

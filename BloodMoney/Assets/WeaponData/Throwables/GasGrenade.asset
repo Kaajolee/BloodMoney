@@ -18,8 +18,11 @@ MonoBehaviour:
   bulletsPerShot: 1
   weaponFirerate: 1
   spreadAngle: 0
+  explosionRadius: 20
   isPurchased: 0
   isEquiped: 0
   bulletPrefab: {fileID: 0}
   weaponType: 4
   weaponClass: 2
+  weaponSprite: {fileID: 21300000, guid: e78c7d54e848e9740abcc49cc76909ca, type: 3}
+  explosionSprites: []

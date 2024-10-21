@@ -23,3 +23,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   weaponType: 5
   weaponClass: 3
+  weaponSprite: {fileID: 21300000, guid: 2190bac383fdb6d4fb9146427a121b8d, type: 3}
