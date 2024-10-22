@@ -22,6 +22,15 @@ public class GrenadeMoveScript : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
+    private void Update()
+    {
+        
+    }
+    private void FixedUpdate()
+    {
+        
+    }
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -56,6 +65,8 @@ public class GrenadeMoveScript : MonoBehaviour
     }
     private void CollisionDetection()
     {
+
+
         Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
         foreach (var item in collisions)
@@ -67,10 +78,14 @@ public class GrenadeMoveScript : MonoBehaviour
             }
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        rb.velocity = new Vector2(0, 0);
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
+    }
     public void DoDamage(EnemyHealthController enemyHealthController)
     {
         enemyHealthController.TakeDamage(grenadeDamage);
-
     }
     public void InitializeAnimation()
     {
@@ -100,8 +115,6 @@ public class GrenadeMoveScript : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        // pritaikyti koalizizija
 
         InitializeAnimation();
     }

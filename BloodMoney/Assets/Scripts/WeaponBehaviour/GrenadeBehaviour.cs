@@ -25,6 +25,7 @@ public class GrenadeBehaviour : MonoBehaviour, IWeaponBehaviour
             Vector2 throwDirection = ((Vector2)Input.mousePosition - (Vector2)instantiationPoint.position).normalized;
 
             grenadeScript.SetDirection(throwDirection);
+
             grenadeScript.SetDamage(weaponData.weaponDamage);
             grenadeScript.SetRadius(weaponData.explosionRadius);
 
