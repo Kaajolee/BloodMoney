@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private Transform playerTransform;
 
-    
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -26,7 +26,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (agent != null)
         {
-            agent.Move(playerTransform.position);
+            agent.SetDestination(playerTransform.position);
         }
     }
+
 }

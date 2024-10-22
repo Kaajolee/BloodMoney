@@ -29,6 +29,7 @@ public class SpriteAnimator : MonoBehaviour
             if (index >= sprites.Count)
             {
                 index = 0;
+                _spriteRenderer.sprite = null;
                 yield break;
             }   
             else
