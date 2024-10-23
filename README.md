@@ -1,9 +1,5 @@
 # Bet Your Pulse
 
-<p align="center">
-  <img src="https://github.com/Kaajolee/WannaBeRpg/blob/main/Png/mainMenuPNG.PNG"/>
-</p>
-
 ## :book: About
 
 A zombie shooter + casino? Is it possible? YES! This is an open world endless 2D zombie shooter game where the currency is your character's health points.
