@@ -119,6 +119,11 @@ The features that are planned, in progress or completed.
     - **Priority** Low
     - **Description** Document every single part of the game.
 
+- **Mobile platform integration**
+    - **Status:** In Progress
+    - **Priority** Low
+    - **Description** Integrate the controls for mobile platform.
+
 - **CO-OP mode**
     - **Status:** Planned
     - **Priority** Medium
