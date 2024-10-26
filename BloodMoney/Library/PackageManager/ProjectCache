@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638628608327034880
-    m_Hash: 2411792900
+      ticks: 638629749593450655
+    m_Hash: 3319594696
   m_LockFileStatus:
     m_FilePath: C:/Users/Karolis/Documents/GitHub/BloodMoney/BloodMoney/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638628608327144099
-    m_Hash: 2699545750
+      ticks: 638629749593450655
+    m_Hash: 881105578
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -691,6 +691,7 @@ m_ResolvedPackages:
     - 3.0.27
     - 3.0.28
     - 3.0.31
+    - 3.0.34
     compatible:
     - 3.0.24
     - 3.0.25
@@ -698,7 +699,8 @@ m_ResolvedPackages:
     - 3.0.27
     - 3.0.28
     - 3.0.31
-    recommended: 3.0.31
+    - 3.0.34
+    recommended: 3.0.34
     deprecated: []
   dependencies:
   - name: com.unity.ext.nunit
