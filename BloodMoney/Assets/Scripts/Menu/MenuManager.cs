@@ -38,27 +38,31 @@ public class MenuManager : MonoBehaviour
     {
         HideAllPanels();
         mainMenu.SetActive(true);
+        UIEvents.Instance.ButtonClicked();
     }
     public void CasinoButtonPressed()
     {
         HideAllPanels();
         casino.SetActive(true);
+        UIEvents.Instance.ButtonClicked();
     }
     public void PlayButtonPressed()
     {
        // HideAllPanels();
         SceneManager.LoadScene("Geimas");
-
+        UIEvents.Instance.ButtonClicked();
     }
     public void OptionsButtonPressed()
     {
         HideAllPanels();
         options.SetActive(true);
+        UIEvents.Instance.ButtonClicked();
     }
     public void CreditsButtonPressed()
     {
         HideAllPanels();
         credits.SetActive(true);
+        UIEvents.Instance.ButtonClicked();
     }
 
 }

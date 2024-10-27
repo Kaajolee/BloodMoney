@@ -435,6 +435,7 @@
 "Assets/Scripts/WeaponBehaviour/ProjectileLogic/BulletMoveScript.cs"
 "Assets/Scripts/WeaponBehaviour/ProjectileLogic/GrenadeMoveScript.cs"
 "Assets/Scripts/WeaponBehaviour/ShotgunBehaviour.cs"
+"Assets/SoundEvents.cs"
 "Assets/WeaponData/Weapon.cs"
 "Assets/ZombieData/Zombie.cs"
 -langversion:9.0

@@ -33,6 +33,9 @@ public class UIEvents : MonoBehaviour
     public event UIEventsHandler ShopThrowablesClicked;
     public event UIEventsHandler ShopSpecialsClicked;
 
+    //sound
+    public event UIEventsHandler AnyButtonClicked;
+
     private void Awake()
     {
         _instance = this;
@@ -64,5 +67,9 @@ public class UIEvents : MonoBehaviour
     public void ShopSpecialsTabClicked()
     {
         ShopSpecialsClicked?.Invoke();
+    }
+    public void ButtonClicked()
+    {
+        AnyButtonClicked?.Invoke();
     }
 }

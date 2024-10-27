@@ -47,6 +47,7 @@ public class TextRandomizer : MonoBehaviour
                 StartCoroutine(IconRandomizer(image));
             }
 
+            UIEvents.Instance.ButtonClicked();
             GlobalEvents.Instance.SpinClicked();
         }
     }
@@ -73,5 +74,6 @@ public class TextRandomizer : MonoBehaviour
         }
 
         isSpinning = false;
+
     }
 }
