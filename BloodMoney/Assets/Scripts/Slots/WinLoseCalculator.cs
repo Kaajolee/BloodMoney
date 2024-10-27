@@ -11,7 +11,7 @@ public class WinLoseCalculator : MonoBehaviour
 
     void Start()
     {
-        GlobalEvents.Instance.SlotSpinClicked += CalculateWinnings;
+        //GlobalEvents.Instance.SlotSpinClicked += CalculateWinnings;
     }
     void ParseNumbers(out int[] values, out int bet)
     {

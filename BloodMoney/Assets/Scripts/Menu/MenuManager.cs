@@ -31,8 +31,8 @@ public class MenuManager : MonoBehaviour
         //upgrades.SetActive(false);
         casino.SetActive(false);
         //trophies.SetActive(false);
-        //options.SetActive(false);
-        //credits.SetActive(false);
+        options.SetActive(false);
+        credits.SetActive(false);
     }
     public void BackButtonPressed()
     {
@@ -49,6 +49,16 @@ public class MenuManager : MonoBehaviour
        // HideAllPanels();
         SceneManager.LoadScene("Geimas");
 
+    }
+    public void OptionsButtonPressed()
+    {
+        HideAllPanels();
+        options.SetActive(true);
+    }
+    public void CreditsButtonPressed()
+    {
+        HideAllPanels();
+        credits.SetActive(true);
     }
 
 }
