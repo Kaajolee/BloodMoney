@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Inspector
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 15873
+  controlID: 130
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 15874
+  controlID: 131
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 15875
+  controlID: 65
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 15876
+  controlID: 66
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -439,9 +439,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ea7a0000
-      m_LastClickedID: 31466
-      m_ExpandedIDs: 129ef7ff10f5ffff56f8ffff02f9fffffefaffffc47a0000e07a00000a7b00004c7c0000a07c0000ac7c0000e07c00001a7d00006c7d0000
+      m_SelectedIDs: 36c10000
+      m_LastClickedID: 49462
+      m_ExpandedIDs: 7ac4ffff18c5ffffced0ffff00d1ffffd0d4ffffc6dcffff64ddffff34e9ffff62e9fffffefaffffdea700009aa8000008a900002cc10000b6c10000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -995,9 +995,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 305.3371, y: 411.6825, z: 2.9629602}
+    m_Target: {x: 693.147, y: 142.23766, z: -1.2548519}
     speed: 2
-    m_Value: {x: 305.3371, y: 411.6825, z: 2.9629602}
+    m_Value: {x: 692.26807, y: 143.08276, z: -1.2562022}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1047,9 +1047,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 125.2599
+    m_Target: 220.95917
     speed: 2
-    m_Value: 125.2599
+    m_Value: 231.37085
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1119,7 +1119,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Assets/Prefabs/CityBlocks
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1127,16 +1127,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
-  - Assets/Assets/Prefabs/CityBlocks
+  - Assets/Scenes
   m_LastFoldersGridSize: 65
   m_LastProjectPath: C:\Users\Karolis\Documents\GitHub\BloodMoney\BloodMoney
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 9a760000
-    m_LastClickedID: 30362
-    m_ExpandedIDs: 000000005e76000060760000627600006476000066760000687600006a7600006c7600006e7600007076000072760000747600009676000000ca9a3b
+    scrollPos: {x: 0, y: 333}
+    m_SelectedIDs: 5e860000
+    m_LastClickedID: 34398
+    m_ExpandedIDs: 00000000f4850000f6850000f8850000fa850000fc850000fe85000000860000028600000486000006860000088600000a86000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1164,7 +1164,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 86860000
     m_LastClickedID: 34438
-    m_ExpandedIDs: 000000005e76000060760000627600006476000066760000687600006a7600006c7600006e76000070760000727600007476000000ca9a3b
+    m_ExpandedIDs: 00000000f4850000f6850000f8850000fa850000fc850000fe85000000860000028600000486000006860000088600000a860000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
