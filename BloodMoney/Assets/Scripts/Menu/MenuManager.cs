@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject mainMenu, options,credits,shop,upgrades,casino,trophies;
+    public GameObject mainMenu, options,credits;
 
 
     void Start()
@@ -29,7 +29,6 @@ public class MenuManager : MonoBehaviour
         mainMenu.SetActive(false);
         //shop.SetActive(false);
         //upgrades.SetActive(false);
-        casino.SetActive(false);
         //trophies.SetActive(false);
         options.SetActive(false);
         credits.SetActive(false);
@@ -38,12 +37,6 @@ public class MenuManager : MonoBehaviour
     {
         HideAllPanels();
         mainMenu.SetActive(true);
-        UIEvents.Instance.ButtonClicked();
-    }
-    public void CasinoButtonPressed()
-    {
-        HideAllPanels();
-        casino.SetActive(true);
         UIEvents.Instance.ButtonClicked();
     }
     public void PlayButtonPressed()

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b726d7ecdad9e04493c014feeb26527, type: 3}
   m_Name: InitialData
   m_EditorClassIdentifier: 
-  isTopConnected: 0
-  isBottomConnected: 0
+  isTopConnected: 1
+  isBottomConnected: 1
   isLeftConnected: 0
-  isRightConnected: 0
+  isRightConnected: 1

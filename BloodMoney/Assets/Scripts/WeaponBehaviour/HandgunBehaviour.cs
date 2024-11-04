@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandgunBehaviour : MonoBehaviour, IWeaponBehaviour
 {
-    public void Shoot(Transform shootPoint, Weapon weaponData, AudioSource audioPlayer)
+    public void Shoot(Transform shootPoint, Weapon weaponData, WeaponSoundPlayer weaponSoundPlayer)
     {
         if(weaponData.bulletPrefab == null)
         {
@@ -19,8 +19,8 @@ public class HandgunBehaviour : MonoBehaviour, IWeaponBehaviour
             bulletScript.SetDirection(shootPoint.up);
             bulletScript.SetDamage(weaponData.weaponDamage);
         }
-        audioPlayer.clip = weaponData.weaponAudio;
-        audioPlayer.Play();
+        weaponSoundPlayer.SetAudioClip(weaponData.weaponAudio);
+        weaponSoundPlayer.Play();
         Destroy(instantiatedBullet, 2);
     }
 }

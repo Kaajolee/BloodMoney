@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IWeaponBehaviour
 {
-    void Shoot(Transform shootPoint, Weapon weaponData, AudioSource audioSource);
+    void Shoot(Transform shootPoint, Weapon weaponData, WeaponSoundPlayer weaponSoundPlayer);
 }

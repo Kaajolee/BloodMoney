@@ -19,8 +19,8 @@ MonoBehaviour:
   weaponFirerate: 2
   spreadAngle: 0
   explosionRadius: 0
-  isPurchased: 1
-  isEquiped: 1
+  isPurchased: 0
+  isEquiped: 0
   bulletPrefab: {fileID: 6155541213819227482, guid: 8a3067702bbf19840b68d7f62021c9d0, type: 3}
   weaponType: 1
   weaponClass: 1

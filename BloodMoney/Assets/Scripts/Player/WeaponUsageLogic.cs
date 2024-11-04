@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WeaponUsageLogic : MonoBehaviour
 {
@@ -26,10 +27,9 @@ public class WeaponUsageLogic : MonoBehaviour
     [Space]
     public Transform shootPoint;
 
-    [Space]
-    public AudioSource audioSource;
-
     private Coroutine shootingCoroutine;
+
+    public bool isMouseOverUI = false;
     void Start()
     {
        // SetWeaponBehaviour(gunData);
@@ -39,7 +39,9 @@ public class WeaponUsageLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        isMouseOverUI = DetectMouse();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isMouseOverUI)
         {
             if (shootingCoroutine == null)
             {
@@ -57,7 +59,7 @@ public class WeaponUsageLogic : MonoBehaviour
 
         }
 
-        else if (Input.GetKeyDown(KeyCode.G))
+        else if (Input.GetKeyDown(KeyCode.G) && !isMouseOverUI)
         {
             UtilityUsage();
         }
@@ -102,7 +104,7 @@ public class WeaponUsageLogic : MonoBehaviour
         {
             while (true)
             {
-                currentWeaponBehaviour.Shoot(shootPoint, gunData, audioSource);
+                currentWeaponBehaviour.Shoot(shootPoint, gunData, WeaponSoundPlayer.Instance);
                 yield return new WaitForSeconds(1f / gunData.weaponFirerate);
             }
         }
@@ -111,7 +113,11 @@ public class WeaponUsageLogic : MonoBehaviour
     {
         if (grenadeData != null)
         {
-            currentGrenadeBehaviour.Shoot(shootPoint, grenadeData, audioSource);
+            currentGrenadeBehaviour.Shoot(shootPoint, grenadeData, WeaponSoundPlayer.Instance);
         }
+    }
+    bool DetectMouse()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }

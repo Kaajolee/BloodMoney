@@ -6,7 +6,7 @@ public class TriggerScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private GameObject shopPanel;
+    private GameObject whatToShow;
     private BoxCollider2D boxCollider;
     private void Start()
     {
@@ -21,7 +21,7 @@ public class TriggerScript : MonoBehaviour
         }
             
         else
-            shopPanel.SetActive(true);
+            whatToShow.SetActive(true);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -31,7 +31,7 @@ public class TriggerScript : MonoBehaviour
             return;
         }
         else
-            shopPanel.SetActive(false);
+            whatToShow.SetActive(false);
     }
 
 }

@@ -53,6 +53,8 @@ public class BulletMoveScript : MonoBehaviour
             DoDamage(enemyHealthController);
             Destroy(gameObject);
         }
+        else
+            Destroy(gameObject);
     }
     public void DoDamage(EnemyHealthController enemyHealthController)
     {

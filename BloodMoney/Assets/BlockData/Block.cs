@@ -9,4 +9,6 @@ public class Block : ScriptableObject
     public bool isBottomConnected;
     public bool isLeftConnected;
     public bool isRightConnected;
+
+    
 }

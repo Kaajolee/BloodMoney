@@ -262,9 +262,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e44fffff
-      m_LastClickedID: -45084
-      m_ExpandedIDs: 4e48ffff4849ffff5a54ffff2e56fffffefaffffce740000e0750000dc760000
+      m_SelectedIDs: b0930200d89202005a930200d6930200
+      m_LastClickedID: 168918
+      m_ExpandedIDs: 36b4fdff3cbcfdffdabcfdff70c8fdff9ec8fdff2009feff725cfefff665feffd26efeff526ffeff5070fefffefaffff62730000f07400000a7600008a760000187700006eab010092b101007cb20100a0b20100c892020072930200e0930200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -846,9 +846,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 627.02203, y: 529.5561, z: 0.44418967}
+    m_Target: {x: 782.112, y: 306.2344, z: 0.5855298}
     speed: 2
-    m_Value: {x: 627.02203, y: 529.5561, z: 0.44418967}
+    m_Value: {x: 782.112, y: 306.2344, z: 0.5855298}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -898,9 +898,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 62.103825
+    m_Target: 479.6425
     speed: 2
-    m_Value: 62.103825
+    m_Value: 479.6425
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -997,7 +997,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Assets/Sprites/UI
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1005,16 +1005,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
-  - Assets/Assets/Sprites/UI
+  - Assets/Scenes
   m_LastFoldersGridSize: 65
   m_LastProjectPath: C:\Users\Karolis\Documents\GitHub\BloodMoney\BloodMoney
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: ba050100
-    m_LastClickedID: 67002
-    m_ExpandedIDs: 00000000b8850000ba850000bc850000be850000c0850000c2850000c4850000c6850000c8850000ee85000000ca9a3b
+    scrollPos: {x: 0, y: 219}
+    m_SelectedIDs: 4e860000
+    m_LastClickedID: 34382
+    m_ExpandedIDs: 000000000c8600000e86000010860000128600001486000016860000188600001a8600001c860000388600003e860000f894000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1042,7 +1042,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 86860000
     m_LastClickedID: 34438
-    m_ExpandedIDs: 00000000b8850000ba850000bc850000be850000c0850000c2850000c4850000c6850000c885000000ca9a3b
+    m_ExpandedIDs: 000000000c8600000e86000010860000128600001486000016860000188600001a8600001c86000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1067,9 +1067,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: e44fffff
-    m_LastClickedInstanceID: -45084
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: b0930200d89202005a930200d6930200
+    m_LastClickedInstanceID: 168880
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000ea9e0000b45d0000967200004e82000040160100b263000000000000927100005a710000827f0000c8bb01000056010058760000d2a502000875000020de0000f27000002877ffff2ef50000668100007ef3ffff
     m_RenameOverlay:
       m_UserAcceptedRename: 0

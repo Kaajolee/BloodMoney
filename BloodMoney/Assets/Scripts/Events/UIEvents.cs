@@ -68,6 +68,7 @@ public class UIEvents : MonoBehaviour
     {
         ShopSpecialsClicked?.Invoke();
     }
+    //ONLY FOR SOUND QUEUES
     public void ButtonClicked()
     {
         AnyButtonClicked?.Invoke();

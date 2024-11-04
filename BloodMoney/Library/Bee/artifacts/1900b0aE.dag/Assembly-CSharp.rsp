@@ -434,6 +434,7 @@
 "Assets/Scripts/Slots/TextRandomizer.cs"
 "Assets/Scripts/Slots/WinLoseCalculator.cs"
 "Assets/Scripts/Sound/SoundEvents.cs"
+"Assets/Scripts/Sound/WeaponSoundPlayer.cs"
 "Assets/Scripts/SpriteAnimator.cs"
 "Assets/Scripts/UILabelUpdate.cs"
 "Assets/Scripts/WeaponBehaviour/GrenadeBehaviour.cs"

@@ -102,18 +102,21 @@ public class ShopUIController : MonoBehaviour
         Weapon currentWeapon = dataVault.GetCurrentItem();
         shopDataController.EquipItem(currentWeapon);
         UpdateCurrentWeaponUI(currentWeapon);
+        uiEvents.ButtonClicked();
     }
     public void BuyButtonClicked()
     {
         Weapon currentWeapon = dataVault.GetCurrentItem();
         shopDataController.BuyItem(currentWeapon);
         UpdateCurrentWeaponUI(currentWeapon);
+        uiEvents.ButtonClicked();
     }
     public void SellButtonClicked()
     {
         Weapon currentWeapon = dataVault.GetCurrentItem();
         shopDataController.SellItem(currentWeapon);
         UpdateCurrentWeaponUI(currentWeapon);
+        uiEvents.ButtonClicked();
     }
     #endregion
     public void MoveMenuLeftClicked()
@@ -121,6 +124,7 @@ public class ShopUIController : MonoBehaviour
         if (cameraScript.transitionEnded)
         {
             uiEvents.ShopLeftClicked();
+            uiEvents.ButtonClicked();
             cameraScript.MoveLeft();
 
             Weapon currentWeapon = dataVault.GetCurrentItem();
@@ -133,6 +137,7 @@ public class ShopUIController : MonoBehaviour
         if (cameraScript.transitionEnded)
         {
             uiEvents.ShopRightClicked();
+            uiEvents.ButtonClicked();
             cameraScript.MoveRight();
 
             Weapon currentWeapon = dataVault.GetCurrentItem();
@@ -144,8 +149,9 @@ public class ShopUIController : MonoBehaviour
     {
         if (cameraScript.transitionEnded)
         {
-            UIEvents.Instance.ShopWeaponsTabClicked();
+            uiEvents.ShopWeaponsTabClicked();
             cameraScript.WeaponsClicked();
+            uiEvents.ButtonClicked();
 
             Weapon currentWeapon = dataVault.GetCurrentItem();
             UpdateCurrentWeaponUI(currentWeapon);
@@ -155,8 +161,9 @@ public class ShopUIController : MonoBehaviour
     {
         if (cameraScript.transitionEnded)
         {
-            UIEvents.Instance.ShopThrowablesTabClicked();
+            uiEvents.ShopThrowablesTabClicked();
             cameraScript.ThrowablesClicked();
+            uiEvents.ButtonClicked();
 
             Weapon currentWeapon = dataVault.GetCurrentItem();
             UpdateCurrentWeaponUI(currentWeapon);
@@ -166,8 +173,9 @@ public class ShopUIController : MonoBehaviour
     {
         if (cameraScript.transitionEnded)
         {
-            UIEvents.Instance.ShopSpecialsTabClicked();
+            uiEvents.ShopSpecialsTabClicked();
             cameraScript.SpecialsClicked();
+            uiEvents.ButtonClicked();
 
             Weapon currentWeapon = dataVault.GetCurrentItem();
             UpdateCurrentWeaponUI(currentWeapon);

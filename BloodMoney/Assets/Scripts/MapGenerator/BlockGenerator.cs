@@ -42,19 +42,19 @@ public class BlockGenerator : MonoBehaviour
     [Header("Player location")]
     private Transform playerTransform;
 
-    [Space]
-    [Header("Toggle for corner calculation( button: O)")]
-    public bool cornerCalcToggle = false;
+    //[Space]
+    //[Header("Toggle for corner calculation( button: O)")]
+    //public bool cornerCalcToggle = true;
     
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
             InstantiateBlock();
 
-        if (Input.GetKeyDown(KeyCode.O))
-            cornerCalcToggle = !cornerCalcToggle;
+        //if (Input.GetKeyDown(KeyCode.O))
+        //    cornerCalcToggle = !cornerCalcToggle;
 
-        if (cornerCalcToggle)
+        //if (cornerCalcToggle)
             currentCorner = CurrentPlayerCorner(playerTransform, currentBlock.transform);
 
     }
