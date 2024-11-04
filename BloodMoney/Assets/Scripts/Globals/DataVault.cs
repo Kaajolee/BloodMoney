@@ -9,7 +9,7 @@ public class DataVault : MonoBehaviour
         {
             if (_instance == null)
             {
-                Debug.LogError("UI Events is null");
+                Debug.LogError("DataVault is null");
             }
             return _instance;
         }
