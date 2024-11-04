@@ -45,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
     }
+    public Vector2 GetPlayerPosition()
+    {
+        return transform.position;
+    }
     public void RotateCharacter()
     {
         //Debug.Log(moveDirection);

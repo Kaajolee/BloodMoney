@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -24,39 +25,59 @@ public class BlockGenerator : MonoBehaviour
     }
 
     [SerializeField]
+    [Header("BlockPrefabs")]
     private List<GameObject> CityBlocks;
 
+    [Space]
+    [Header("Current block the player is on")]
     [SerializeField]
-    private GameObject currentBlock; //on what block is the player on right now
+    private GameObject currentBlock;
 
     [SerializeField]
+    [Space]
+    [Header("Current side the player on a block is on")]
     private CurrentCornerPlayerIsIn currentCorner;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    [SerializeField]
+    [Header("Player location")]
+    private Transform playerTransform;
+
+    [Space]
+    [Header("Toggle for corner calculation( button: O)")]
+    public bool cornerCalcToggle = false;
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
             InstantiateBlock();
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            currentCorner = CurrentCornerPlayerIsIn.Left;
+        if (Input.GetKeyDown(KeyCode.O))
+            cornerCalcToggle = !cornerCalcToggle;
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            currentCorner = CurrentCornerPlayerIsIn.Right;
+        if (cornerCalcToggle)
+            currentCorner = CurrentPlayerCorner(playerTransform, currentBlock.transform);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            currentCorner = CurrentCornerPlayerIsIn.Top;
-
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            currentCorner = CurrentCornerPlayerIsIn.Bottom;
     }
+    CurrentCornerPlayerIsIn CurrentPlayerCorner(Transform player, Transform block)
+    {
+        Vector2 playerPos = player.position;
+        Vector2 blockPos = block.position;
 
+        //skaiciuoti atstumus
+        float verticalDistance = playerPos.y - blockPos.y;
+        float horizontalDistance = playerPos.x - blockPos.x;
 
-    void InstantiateBlock()
+        //palygina vertes
+        if (Mathf.Abs(verticalDistance) > Mathf.Abs(horizontalDistance))
+        {
+            return verticalDistance > 0 ? CurrentCornerPlayerIsIn.Top : CurrentCornerPlayerIsIn.Bottom;
+        }
+        else
+        {
+            return horizontalDistance > 0 ? CurrentCornerPlayerIsIn.Right : CurrentCornerPlayerIsIn.Left;
+        }
+    }
+    public void InstantiateBlock()
     {
         GameObject blockToCreate = GetBlock(currentBlock);
         GameObject instantiatedBlock = Instantiate(blockToCreate);
@@ -65,6 +86,7 @@ public class BlockGenerator : MonoBehaviour
         BlockDataHolder currentData = currentBlock.GetComponent<BlockDataHolder>();
         BlockDataHolder newData = instantiatedBlock.GetComponent<BlockDataHolder>();
 
+        // data holderiai kurie laiko connectionu boolus
         DataHolder instantiatedConnectionDataHolder = instantiatedBlock.AddComponent<DataHolder>();
         instantiatedConnectionDataHolder.DataObject = ScriptableObject.CreateInstance<Block>();
 
