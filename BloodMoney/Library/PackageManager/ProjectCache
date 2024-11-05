@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638629749593450655
-    m_Hash: 3319594696
+      ticks: 638628608327034880
+    m_Hash: 2411792900
   m_LockFileStatus:
     m_FilePath: C:/Users/Karolis/Documents/GitHub/BloodMoney/BloodMoney/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638629749593450655
-    m_Hash: 881105578
+      ticks: 638628608327144099
+    m_Hash: 2699545750
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -187,6 +187,7 @@ m_ResolvedPackages:
     - 2.9.7
     - 2.10.0
     - 2.10.1
+    - 2.10.2
     - 3.0.0-pre.3
     - 3.0.0-pre.4
     - 3.0.0-pre.5
@@ -203,6 +204,7 @@ m_ResolvedPackages:
     - 2.9.7
     - 2.10.0
     - 2.10.1
+    - 2.10.2
     - 3.0.0-pre.3
     - 3.0.0-pre.4
     - 3.0.0-pre.5
@@ -4611,11 +4613,13 @@ m_ResolvedPackages:
     - 2.3.0
     - 2.3.1
     - 2.3.2
+    - 2.4.0
     compatible:
     - 2.2.2
     - 2.3.0
     - 2.3.1
     - 2.3.2
+    - 2.4.0
     recommended: 2.2.2
     deprecated: []
   dependencies:
@@ -4805,6 +4809,7 @@ m_ResolvedPackages:
     - 10.1.1
     - 10.1.2
     - 10.1.3
+    - 10.1.4
     compatible:
     - 9.0.3
     - 9.0.4
@@ -5303,6 +5308,7 @@ m_ResolvedPackages:
     - 10.0.4
     - 10.0.5
     - 10.0.6
+    - 10.0.7
     compatible:
     - 9.0.2
     - 9.0.3
@@ -5516,6 +5522,7 @@ m_ResolvedPackages:
     - 4.0.0
     - 4.0.1
     - 4.0.2
+    - 4.1.0
     compatible:
     - 3.1.1
     - 3.1.2
@@ -5967,6 +5974,7 @@ m_ResolvedPackages:
     - 9.0.4
     - 9.0.5
     - 9.0.6
+    - 9.0.7
     compatible:
     - 8.0.1
     - 8.0.2

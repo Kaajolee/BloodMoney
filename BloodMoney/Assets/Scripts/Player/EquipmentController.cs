@@ -92,6 +92,7 @@ public class EquipmentController : MonoBehaviour
 
     private void SetInitialState()
     {
+
         gunSprite.sprite = null;
         specialSprite.sprite = null;
         throwableSprite.sprite = null;
