@@ -25,8 +25,20 @@ public class BlockGenerator : MonoBehaviour
     }
 
     [SerializeField]
-    [Header("BlockPrefabs")]
-    private List<GameObject> CityBlocks;
+    [Header("City block prefabs with vertical visual connections")]
+    private List<GameObject> VerticalCityBlocks;
+
+    [SerializeField]
+    [Header("City block prefabs with horizontal visual connections")]
+    private List<GameObject> HorizontalCityBlocks;
+
+    [SerializeField]
+    [Header("City block prefabs with four visual connections")]
+    private List<GameObject> FourConnectionsCityBlocks;
+
+    [SerializeField]
+    [Header("City block prefabs with no visual connections")]
+    private List<GameObject> NoConnectionsCityBlocks;
 
     [Space]
     [Header("Current block the player is on")]
@@ -42,19 +54,19 @@ public class BlockGenerator : MonoBehaviour
     [Header("Player location")]
     private Transform playerTransform;
 
-    //[Space]
-    //[Header("Toggle for corner calculation( button: O)")]
-    //public bool cornerCalcToggle = true;
+    [Space]
+    [Header("Toggle for corner calculation( button: O)")]
+    public bool cornerCalcToggle = true;
     
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
             InstantiateBlock();
 
-        //if (Input.GetKeyDown(KeyCode.O))
-        //    cornerCalcToggle = !cornerCalcToggle;
+        if (Input.GetKeyDown(KeyCode.O))
+            cornerCalcToggle = !cornerCalcToggle;
 
-        //if (cornerCalcToggle)
+        if (cornerCalcToggle)
             currentCorner = CurrentPlayerCorner(playerTransform, currentBlock.transform);
 
     }
@@ -79,7 +91,7 @@ public class BlockGenerator : MonoBehaviour
     }
     public void InstantiateBlock()
     {
-        GameObject blockToCreate = GetBlock(currentBlock);
+        GameObject blockToCreate = GetBlock(currentBlock, currentCorner);
         GameObject instantiatedBlock = Instantiate(blockToCreate);
 
         //prijungimo poziciju data
@@ -166,25 +178,49 @@ public class BlockGenerator : MonoBehaviour
         }
     }
 
-    GameObject GetBlock(GameObject currentBlock) 
+    GameObject GetBlock(GameObject currentBlock, CurrentCornerPlayerIsIn currentCornerPlayerIsIn) 
     {
-        GameObject block = GetRandomBlock();
+        GameObject block = GetRandomBlock(currentCornerPlayerIsIn);
 
-        if(currentBlock == block)
-        {
-            block = GetRandomBlock();
-            return block;
-        }
-        else
-            return block;
+        return block;
     }
 
 
-    GameObject GetRandomBlock()
+    GameObject GetRandomBlock(CurrentCornerPlayerIsIn currentCornerPlayerIsIn)
     {
-        GameObject block = CityBlocks[Random.Range(0, CityBlocks.Count)];
+        int randomNumber = Random.Range(0, 2);
 
-        return block;
+        switch (currentCornerPlayerIsIn)
+        {
+            case CurrentCornerPlayerIsIn.Top:
+                if (randomNumber == 0)
+                    return VerticalCityBlocks[Random.Range(0, VerticalCityBlocks.Count)];
+                else
+                    return FourConnectionsCityBlocks[Random.Range(0, VerticalCityBlocks.Count)];
+
+
+
+            case CurrentCornerPlayerIsIn.Bottom:
+                if (randomNumber == 0)
+                    return VerticalCityBlocks[Random.Range(0, VerticalCityBlocks.Count)];
+                else
+                    return FourConnectionsCityBlocks[Random.Range(0, VerticalCityBlocks.Count)];
+
+
+
+            case CurrentCornerPlayerIsIn.Left:
+                if (randomNumber == 0)
+                    return HorizontalCityBlocks[Random.Range(0, VerticalCityBlocks.Count)];
+                else
+                    return FourConnectionsCityBlocks[Random.Range(0, VerticalCityBlocks.Count)];
+
+            case CurrentCornerPlayerIsIn.Right:
+                if (randomNumber == 0)
+                    return HorizontalCityBlocks[Random.Range(0, VerticalCityBlocks.Count)];
+                else
+                    return FourConnectionsCityBlocks[Random.Range(0, VerticalCityBlocks.Count)];
+        }
+        return null;
     }
 
 

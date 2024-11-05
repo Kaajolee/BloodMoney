@@ -10,7 +10,9 @@ public class BlockDataHolder : MonoBehaviour
     public Transform LeftPoint;
     public Transform RightPoint;
     public Transform CenterPoint;
-
+    [Space]
+    public BlockType BlockType;
+    public BlockDirection Direction;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         BlockGenerator.Instance.SetCurrentBlock(gameObject);
