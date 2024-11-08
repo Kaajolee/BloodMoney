@@ -125,6 +125,7 @@ public class BlockGenerator : MonoBehaviour
         Vector2 newBlockConnectionPoint = Vector2.zero;
 
         //switchas nustatyti puses
+        /*
         switch (currentCorner)
         {
             case CurrentCornerPlayerIsIn.Top:
@@ -147,7 +148,7 @@ public class BlockGenerator : MonoBehaviour
                 newBlockConnectionPoint = newBlockData.LeftPoint.position;
                 break;
         }
-
+        */
         // sulygina
         return initialPosition + (targetConnectionPoint - newBlockConnectionPoint);
     }

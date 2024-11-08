@@ -554,7 +554,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.44596, y: -0.47096682, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 9, y: 9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7288533816832205524}
@@ -638,6 +638,7 @@ MonoBehaviour:
   RightPoint: {fileID: 6496910139338918783}
   CenterPoint: {fileID: 2441520496251978620}
   BlockType: 0
+  Direction: 0
 --- !u!61 &7095019730285507730
 BoxCollider2D:
   m_ObjectHideFlags: 0
