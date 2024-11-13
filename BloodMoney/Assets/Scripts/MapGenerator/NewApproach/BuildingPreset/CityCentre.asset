@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14a0684f18233e48a46ea9044952d22, type: 3}
   m_Name: CityCentre
   m_EditorClassIdentifier: 
-  tiles: []
+  tiles:
+  - {fileID: 21300000, guid: f6eaba7728e36c94d97bd6217e73c5da, type: 3}
   minDensity: 0.8
   minLandValue: 0.8
   maxProximity: 50
