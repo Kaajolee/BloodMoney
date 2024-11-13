@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
+    public static Map Instance { get; private set; }
+
     public BuildingPreset[] buildingPresets;
+    public List<GameObject> generatedTiles;
     public GameObject tilePrefab;
+    public GameObject tileParent;
 
     public int width;
     public int height;
@@ -22,19 +26,27 @@ public class Map : MonoBehaviour
     public float[,] proximityMap;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
-        
+        GenerateMap();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GenerateMap();
+        
     }
     
     void GenerateMap()
     {
+        RandomiseSeed(densityWaves);
+        RandomiseSeed(landValueWaves);
+        RandomiseSeed(proximityWaves);
+
         densityMap = PerlinNoiseGenerator.Generate(width, height, scale, densityWaves, offset);
 
         landValueMap = PerlinNoiseGenerator.Generate(width, height, scale, landValueWaves, offset);
@@ -45,10 +57,23 @@ public class Map : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                GameObject tile = Instantiate(tilePrefab, new Vector3(x, y, 0), Quaternion.identity);
+                GameObject tile = Instantiate(tilePrefab, new Vector3(x, y, 0), Quaternion.identity, tileParent.transform);
+                generatedTiles.Add(tile);
                 tile.GetComponent<SpriteRenderer>().sprite = GetBuilding(densityMap[x,y], landValueMap[x,y], proximityMap[x,y]).GetRandomTile();
             }
         }
+
+        UIEvents.Instance.RegenerateMapPressed();
+    }
+    public void Regenerate()
+    {
+        foreach (var item in generatedTiles)
+        {
+            Destroy(item.gameObject);
+        }
+
+        generatedTiles.Clear();
+        GenerateMap();
     }
     BuildingPreset GetBuilding(float density, float landValue, float proximity)
     {
@@ -87,5 +112,14 @@ public class Map : MonoBehaviour
             buildingToReturn = buildingPresets[0];
 
         return buildingToReturn;
+    }
+
+    void RandomiseSeed(Wave[] waveArray)
+    {
+        foreach (var item in waveArray)
+        {
+
+            item.seed = Random.Range(1, 500);
+        }
     }
 }

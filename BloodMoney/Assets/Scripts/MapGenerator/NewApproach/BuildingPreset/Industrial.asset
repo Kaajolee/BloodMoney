@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14a0684f18233e48a46ea9044952d22, type: 3}
   m_Name: Industrial
   m_EditorClassIdentifier: 
-  tiles: []
-  minDensity: 0.2
-  minLandValue: 0.1
+  tiles:
+  - {fileID: 21300000, guid: a88fab73d76ece84589bc258f0c30852, type: 3}
+  minDensity: 0.19
+  minLandValue: 0.3
   maxProximity: 15

@@ -15,7 +15,7 @@ public class BuildingPreset : ScriptableObject
 
     public bool MatchConditions(float density, float landValue, float proximity)
     {
-        return density >= minDensity && landValue >= minLandValue && proximity <= maxProximity;
+        return density >= minDensity && landValue >= minLandValue; //&& proximity >= maxProximity;
     }
 }
 

@@ -25,6 +25,7 @@ public class UIEvents : MonoBehaviour
     public event UIEventsHandler HealthAmountChanged;
     public event UIEventsHandler ShopTriggered;
     public event UIEventsHandler WeaponEquiped;
+    public event UIEventsHandler GenerateMapPressed;
 
     //shop ui
     public event UIEventsHandler ShopMoveLeftClicked;
@@ -67,6 +68,10 @@ public class UIEvents : MonoBehaviour
     public void ShopSpecialsTabClicked()
     {
         ShopSpecialsClicked?.Invoke();
+    }
+    public void RegenerateMapPressed()
+    {
+        GenerateMapPressed?.Invoke();
     }
     //ONLY FOR SOUND QUEUES
     public void ButtonClicked()

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14a0684f18233e48a46ea9044952d22, type: 3}
   m_Name: Residential
   m_EditorClassIdentifier: 
-  tiles: []
-  minDensity: 0.3
+  tiles:
+  - {fileID: 21300000, guid: 36326c4716e8c8a49b2f695472b99feb, type: 3}
+  minDensity: 0.4
   minLandValue: 0.3
-  maxProximity: 10
+  maxProximity: 15
