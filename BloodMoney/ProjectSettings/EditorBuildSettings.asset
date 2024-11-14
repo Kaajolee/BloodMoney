@@ -12,4 +12,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Geimas.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 3c8274d32e99d90459184f98bd3ee872, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: e604499c139e365439df8505477416de, type: 2}

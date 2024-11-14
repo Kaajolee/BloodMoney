@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BlockType
+public enum TileType
 {
     Suburban,
     Residential,
-    Commercial,
+    CityCentre,
     Industrial,
     Grass,
     Road

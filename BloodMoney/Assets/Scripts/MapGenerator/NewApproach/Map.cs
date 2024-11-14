@@ -59,7 +59,9 @@ public class Map : MonoBehaviour
             {
                 GameObject tile = Instantiate(tilePrefab, new Vector3(x, y, 0), Quaternion.identity, tileParent.transform);
                 generatedTiles.Add(tile);
-                tile.GetComponent<SpriteRenderer>().sprite = GetBuilding(densityMap[x,y], landValueMap[x,y], proximityMap[x,y]).GetRandomTile();
+                TileType tileType;
+                tile.GetComponent<SpriteRenderer>().sprite = GetBuilding(densityMap[x,y], landValueMap[x,y], proximityMap[x,y], out tileType).GetRandomTile();
+                tile.AddComponent<TileDataHolder>().tileType = tileType;
             }
         }
 
@@ -75,7 +77,7 @@ public class Map : MonoBehaviour
         generatedTiles.Clear();
         GenerateMap();
     }
-    BuildingPreset GetBuilding(float density, float landValue, float proximity)
+    BuildingPreset GetBuilding(float density, float landValue, float proximity, out TileType tileType)
     {
         List<BuildingTempData> buildingTemp = new List<BuildingTempData>();
 
@@ -109,8 +111,12 @@ public class Map : MonoBehaviour
         }
 
         if (buildingToReturn == null)
+        {
             buildingToReturn = buildingPresets[0];
+        }
 
+
+        tileType = buildingToReturn.tileType;
         return buildingToReturn;
     }
 

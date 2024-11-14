@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 21300000, guid: d42003022c1ddf84086b3796d0a57bd4, type: 3}
+  prefabs:
+  - {fileID: 4370644926963740867, guid: 1c09ba4198911a045a698a6a251ecf14, type: 3}
   minDensity: 0
   minLandValue: 0
   maxProximity: 15
+  tileType: 4

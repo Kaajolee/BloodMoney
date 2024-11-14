@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering.Universal.Internal;
 using UnityEngine.UI;
-using static TreeEditor.TreeEditorHelper;
 
 public class PerlinNoiseVisualizer : MonoBehaviour
 {

@@ -246,8 +246,8 @@ Transform:
   m_GameObject: {fileID: 4370644926963740867}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.00609, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3139414188963720500}
@@ -297,7 +297,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 009e0b4313c263141b2344016cd2a432, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7924528, g: 0.41858995, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -319,13 +319,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854174b7f4a4fd94d95ee99ab6fd060e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TopPoint: {fileID: 270471249438639501}
-  BottomPoint: {fileID: 9062772715391972833}
-  LeftPoint: {fileID: 6877348744875549304}
-  RightPoint: {fileID: 6590769022524951338}
+  NorthPoint: {fileID: 0}
+  SouthPoint: {fileID: 0}
+  WestPoint: {fileID: 0}
+  EastPoint: {fileID: 0}
   CenterPoint: {fileID: 382646887883804985}
   BlockType: 0
-  Direction: 1
 --- !u!61 &2236616433233996872
 BoxCollider2D:
   m_ObjectHideFlags: 0

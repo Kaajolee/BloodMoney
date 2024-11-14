@@ -11,7 +11,7 @@ public class BlockDataHolder : MonoBehaviour
     public Transform EastPoint;
     public Transform CenterPoint;
     [Space]
-    public BlockType BlockType;
+    public TileType BlockType;
 }
 public enum CurrentCornerPlayerIsIn
 {
