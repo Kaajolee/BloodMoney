@@ -8,6 +8,8 @@ public class VoronoiNoiseGenerator : MonoBehaviour
     public int regionAmount;
     private bool drawByDistance = true;
 
+    public Texture2D noiseTexture;
+
     private RawImage RawImage;
     private void Awake()
     {
@@ -21,7 +23,7 @@ public class VoronoiNoiseGenerator : MonoBehaviour
     {
         RawImage = GetComponent<RawImage>();
         if (RawImage == null)
-            Debug.LogError("Image null;");
+            Debug.LogError("Image null");
 
         RawImage.texture = GetDiagramByDistance();
     }
@@ -98,11 +100,11 @@ public class VoronoiNoiseGenerator : MonoBehaviour
     }
     Texture2D GetImageFromColorArray(Color[] pixelColors)
     {
-        Texture2D tex = new Texture2D(imageDim.x, imageDim.y);
-        tex.filterMode = FilterMode.Point;
-        tex.SetPixels(pixelColors);
-        tex.Apply();
-        return tex;
+        noiseTexture = new Texture2D(imageDim.x, imageDim.y);
+        noiseTexture.filterMode = FilterMode.Point;
+        noiseTexture.SetPixels(pixelColors);
+        noiseTexture.Apply();
+        return noiseTexture;
     }
 }
 

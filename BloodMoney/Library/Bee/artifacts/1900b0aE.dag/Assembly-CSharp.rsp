@@ -428,6 +428,7 @@
 "Assets/Scripts/MapGenerator/NewApproach/Map.cs"
 "Assets/Scripts/MapGenerator/NewApproach/PerlinNoise/NoiseVisualizer.cs"
 "Assets/Scripts/MapGenerator/NewApproach/PerlinNoise/PerlinNoiseGenerator.cs"
+"Assets/Scripts/MapGenerator/NewApproach/VoronoiNoise/RoadMapGenerator.cs"
 "Assets/Scripts/MapGenerator/NewApproach/VoronoiNoise/VoronoiNoiseGenerator.cs"
 "Assets/Scripts/MapGenerator/NewApproach/VoronoiNoise/VoronoiNoiseVisualizer.cs"
 "Assets/Scripts/MapGenerator/RoadDataHolder.cs"
