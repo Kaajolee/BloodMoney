@@ -15,7 +15,8 @@ MonoBehaviour:
   tiles:
   - {fileID: 21300000, guid: 36326c4716e8c8a49b2f695472b99feb, type: 3}
   prefabs:
-  - {fileID: 8234005790713425516, guid: c7fd0648776c5dd43bd23251fef79440, type: 3}
+  - {fileID: 2205142588152349543, guid: d9ffc03c3a366e140a33981e1c58f154, type: 3}
+  - {fileID: 8524320308767440592, guid: 6041be0773a27bf449b744757b9f4ce0, type: 3}
   minDensity: 0.4
   minLandValue: 0.3
   maxProximity: 15

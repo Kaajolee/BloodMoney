@@ -331,6 +331,8 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/BlockData/Block.cs"
+"Assets/KeybindManager.cs"
+"Assets/PerformanceMonitor.cs"
 "Assets/Scripts/DataHolder.cs"
 "Assets/Scripts/EnemyScripts/EnemyAI.cs"
 "Assets/Scripts/EnemyScripts/EnemyAIDamage.cs"
