@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class RoadMapGenerator : MonoBehaviour
 {
     [SerializeField]
-    private float grayscaleValue = 0.5f;
+    private float maxGrayscaleValue = 0.5f;
+    [SerializeField]
+    private float minGrayscaleValue = 0.1f;
 
     [SerializeField]
-    private Color backgroundColor = Color.black; // Default background color
-
-    private Color maximumAllowedColorValue;
+    private Color backgroundColor = Color.black;
 
     private RawImage image;
 
@@ -20,46 +20,50 @@ public class RoadMapGenerator : MonoBehaviour
     void Start()
     {
         image = GetComponent<RawImage>();
-        maximumAllowedColorValue = new Color(grayscaleValue, grayscaleValue, grayscaleValue);
+
+
+        UIEvents.Instance.VoronoiTextureGenerated += GenerateRoadTexture;
     }
 
     public void GenerateRoadTexture()
     {
-        Texture2D originalNoise = generator.noiseTexture;
+        float[,] originalNoise = generator.grayscaleValues;
 
-   
-        Texture2D noiseCopy = new Texture2D(originalNoise.width, originalNoise.height, originalNoise.format, false);
-        noiseCopy.SetPixels(originalNoise.GetPixels()); 
+        Texture2D texture = new Texture2D(generator.imageDim.x, generator.imageDim.y, TextureFormat.RGBA32, false);
 
-        ChangePixels(noiseCopy);
-        noiseCopy.Apply();
+        Color[] pixels = new Color[generator.imageDim.x * generator.imageDim.y];
 
-        image.texture = noiseCopy; 
-    }
-
-    void ChangePixels(Texture2D noiseTexture)
-    {
-        for (int x = 0; x < noiseTexture.width; x++)
+        for (int x = 0; x < generator.imageDim.x; x++)
         {
-            for (int y = 0; y < noiseTexture.height; y++)
+            for (int y = 0; y < generator.imageDim.y; y++)
             {
-                Color pixelColor = noiseTexture.GetPixel(x, y);
+                float value = originalNoise[x, y];
 
-                pixelColor = CheckAndSetColor(pixelColor);
-
-                noiseTexture.SetPixel(x, y, pixelColor);
+                if(value > minGrayscaleValue && value < maxGrayscaleValue)
+                    pixels[x * generator.imageDim.x + y] = new Color(1, 1, 1, 1f);
+                    //pixels[x + y * generator.imageDim.x] = new Color(value, value, value, 1f);
+                else
+                    pixels[x * generator.imageDim.x + y] = backgroundColor;
             }
         }
-    }
 
-    Color CheckAndSetColor(Color pixelColor)
+        texture.SetPixels(pixels);
+        texture.Apply();
+
+        image.texture = texture;
+    }
+    void test()
     {
-        //Debug.Log($"Pixel grayscale: {pixelColor.grayscale}, Threshold: {grayscaleValue}");
-        if (pixelColor.grayscale <= grayscaleValue)
+        Texture2D testTexture = new Texture2D(100, 100, TextureFormat.RGBA32, false);
+        for (int x = 0; x < 100; x++)
         {
-            pixelColor = backgroundColor;
+            for (int y = 0; y < 100; y++)
+            {
+                testTexture.SetPixel(x, y, Color.red); // Set all pixels to red
+            }
         }
-        return pixelColor;
+        testTexture.Apply();
+        image.texture = testTexture;
     }
 }
 
