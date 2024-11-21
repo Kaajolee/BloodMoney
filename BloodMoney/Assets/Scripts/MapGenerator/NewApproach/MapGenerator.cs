@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class MapGenerator : MonoBehaviour
     private BuildingPreset grassPreset;
     [SerializeField]
     private RoadPreset roadPreset;
+
+    [SerializeField]
+    private Transform parent;
 
     private SpriteRenderer spriteRenderer;
 
@@ -68,39 +72,18 @@ public class MapGenerator : MonoBehaviour
                     {
                         if(x % 2 != 0)
                         {
-                            GameObject prefabToInstantiate = roadPreset.intersectionPrefab;
-
-                            if (prefabToInstantiate != null)
-                            {
-                                Instantiate(prefabToInstantiate, pos, Quaternion.identity);
-                            }
-                            else
-                                Debug.LogError("Intersection prefab is null");
+                            InstantiateMapTile(roadPreset.intersectionPrefab, pos);
 
                         }
                         else
                         {
-                            GameObject prefabToInstantiate = roadPreset.horizontalPrefab;
-
-                            if (prefabToInstantiate != null)
-                            {
-                                Instantiate(prefabToInstantiate, pos, Quaternion.identity);
-                            }
-                            else
-                                Debug.LogError("HorizontalRoad prefab is null");
+                            InstantiateMapTile(roadPreset.horizontalPrefab, pos);
                         }
 
                     }
                     else if(x % 2 != 0 && y % 2 == 0)
                     {
-                        GameObject prefabToInstantiate = roadPreset.verticalPrefab;
-
-                        if (prefabToInstantiate != null)
-                        {
-                            Instantiate(prefabToInstantiate, pos, Quaternion.identity);
-                        }
-                        else
-                            Debug.LogError("VerticalRoad prefab is null");
+                        InstantiateMapTile(roadPreset.verticalPrefab, pos);
                     }
                     else
                     {
@@ -108,7 +91,7 @@ public class MapGenerator : MonoBehaviour
 
                         if (prefabToInstantiate != null)
                         {
-                            Instantiate(prefabToInstantiate, pos, Quaternion.identity);
+                            Instantiate(prefabToInstantiate, pos, Quaternion.identity, parent);
                         }
                         else
                             Debug.LogError("Building prefab is null");
@@ -172,6 +155,17 @@ public class MapGenerator : MonoBehaviour
 
             }
         }
+    }
+    void InstantiateMapTile(GameObject prefab, Vector2 pos)
+    {
+        GameObject prefabToInstantiate = prefab;
+
+        if (prefabToInstantiate != null)
+        {
+            Instantiate(prefabToInstantiate, pos, Quaternion.identity, parent);
+        }
+        else
+            Debug.LogError("Prefab is null, original: " + prefab.name);
     }
 
 }
