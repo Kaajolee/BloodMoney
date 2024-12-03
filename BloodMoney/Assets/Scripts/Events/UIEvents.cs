@@ -26,6 +26,7 @@ public class UIEvents : MonoBehaviour
     public event UIEventsHandler ShopTriggered;
     public event UIEventsHandler WeaponEquiped;
     public event UIEventsHandler GenerateMapPressed;
+    public event UIEventsHandler VoronoiTextureGenerated;
 
     //shop ui
     public event UIEventsHandler ShopMoveLeftClicked;
@@ -72,6 +73,10 @@ public class UIEvents : MonoBehaviour
     public void RegenerateMapPressed()
     {
         GenerateMapPressed?.Invoke();
+    }
+    public void VoronoiGenerated()
+    {
+        VoronoiTextureGenerated?.Invoke();
     }
     //ONLY FOR SOUND QUEUES
     public void ButtonClicked()

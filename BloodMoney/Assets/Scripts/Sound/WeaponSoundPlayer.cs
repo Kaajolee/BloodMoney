@@ -38,6 +38,7 @@ public class WeaponSoundPlayer : MonoBehaviour
         {
             audioSources[i] = gameObject.AddComponent<AudioSource>();
             audioSources[i].clip = gunshotClip;
+            audioSources[i].volume = 0.2f;
         }
     }
     public AudioSource GetAudioSource()
