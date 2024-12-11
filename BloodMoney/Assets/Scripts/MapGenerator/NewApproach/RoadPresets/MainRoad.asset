@@ -15,3 +15,4 @@ MonoBehaviour:
   intersectionPrefab: {fileID: 8370048992820790748, guid: 2a6fd41cc7e2b2f4487e60eded64e714, type: 3}
   verticalPrefab: {fileID: 2438534284635257090, guid: 25f89b6bc228a9e47ae86a2e79153f0c, type: 3}
   horizontalPrefab: {fileID: 7211800153973941884, guid: 6cab9a60ffb194642888ac47fc4a31cb, type: 3}
+  roadEndPrefab: {fileID: 4967709867533892037, guid: 0dfb8a634b1933c488aa61171e6d4da8, type: 3}

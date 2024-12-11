@@ -8,5 +8,6 @@ public class RoadPreset : ScriptableObject
     public GameObject intersectionPrefab;
     public GameObject verticalPrefab;
     public GameObject horizontalPrefab;
+    public GameObject roadEndPrefab;
 
 }

@@ -32,6 +32,7 @@ public class Map : MonoBehaviour
     }
     void Start()
     {
+        generatedTiles.Clear();
         GenerateMap();
     }
 

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Net;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -14,7 +12,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private TileDataHolder[] tileObjects;
     [SerializeField]
-    private List<TileType> tileTypes;
+    private TileType[,] tileTypes; // Two-dimensional array for tile types
+    private int[,] roads;
 
     [Space]
     [Header("Building presets")]
@@ -37,6 +36,8 @@ public class MapGenerator : MonoBehaviour
     private void Start()
     {
         mapDataGenerator = Map.Instance;
+        tileTypes = new TileType[mapDataGenerator.width, mapDataGenerator.height];
+        roads = new int[mapDataGenerator.width, mapDataGenerator.height];
         GetTiles();
 
         spriteRenderer = residentialPreset.prefabs[0].GetComponent<SpriteRenderer>();
@@ -50,10 +51,21 @@ public class MapGenerator : MonoBehaviour
     {
         tileObjects = mapDataGenerator.tileParent.GetComponentsInChildren<TileDataHolder>();
 
-        foreach (var item in tileObjects)
+        int index = 0;
+        for (int x = 0; x < mapDataGenerator.width; x++)
         {
-            tileTypes.Add(item.tileType);
-
+            for (int y = 0; y < mapDataGenerator.height; y++)
+            {
+                if (index < tileObjects.Length)
+                {
+                    tileTypes[x, y] = tileObjects[index].tileType;
+                    index++;
+                }
+                else
+                {
+                    Debug.LogError("Tile data out ofd bounds");
+                }
+            }
         }
     }
     public void InstantiatePrefabs()
@@ -62,52 +74,76 @@ public class MapGenerator : MonoBehaviour
         {
             for (int y = 0; y < mapDataGenerator.height; y++)
             {
-                int index = x * mapDataGenerator.width + y;
+                Vector2 pos = new Vector2(x * spriteRenderer.bounds.size.x, y * spriteRenderer.bounds.size.y);
 
-                if (index < tileTypes.Count)
+                TileType currentTileType = tileTypes[x, y];
+
+                if (currentTileType != TileType.Grass)
                 {
-                    Vector2 pos = new Vector2(x * spriteRenderer.bounds.size.x, y * spriteRenderer.bounds.size.y);
 
-                    if(y % 2 != 0)
+                    if (y % 4 == 0)
                     {
-                        if(x % 2 != 0)
+                        if (x % 4 == 0)
                         {
                             InstantiateMapTile(roadPreset.intersectionPrefab, pos);
-
+                            roads[x, y] = 1;
+                            continue;
+                            
                         }
                         else
                         {
                             InstantiateMapTile(roadPreset.horizontalPrefab, pos);
+                            roads[x, y] = 1;
+                            continue;
                         }
-
                     }
-                    else if(x % 2 != 0 && y % 2 == 0)
+                    else if (x % 4 == 0 && y % 4 != 0)
                     {
                         InstantiateMapTile(roadPreset.verticalPrefab, pos);
+                        roads[x, y] = 1;
+                        continue;
                     }
-                    else
-                    {
-                        GameObject prefabToInstantiate = GetPreset(tileTypes[index]).GetRandomPrefab();
-
-                        if (prefabToInstantiate != null)
-                        {
-                            Instantiate(prefabToInstantiate, pos, Quaternion.identity, parent);
-                        }
-                        else
-                            Debug.LogError("Building prefab is null");
-                    }
-
-
                 }
-                else
-                    Debug.LogError("Index too big");
+                else if (currentTileType == TileType.Grass)
+                {
+                    if (x != 0 && y != 0)
+                    {
+                        if (roads[x - 1, y] == 1)
+                        {
+
+                            //  PROBLEMA: TURI ROTATE'INT SUKURTA O NE MAIN PREFAB
+                            GameObject roadEnd = InstantiateMapTile(roadPreset.roadEndPrefab, pos);
+
+                            roadEnd.transform.rotation = Quaternion.Euler(0, 0, 90);
+
+                            Debug.Log("Road End Rotation: " + roadEnd.transform.rotation.eulerAngles);
+
+                            continue;
+                        }
+                    }
+                }
+
+
+
+                //vidurys tarp pastatu
+                if (x % 2 == 0 && y % 2 == 0)
+                {
+                    InstantiateMapTile(GetPreset(TileType.Grass).GetRandomPrefab(), pos);
+                    continue;
+                }
+
+                //kiti objektai
+                GameObject prefabToInstantiate = GetPreset(currentTileType).GetRandomPrefab();
+
+                InstantiateMapTile(prefabToInstantiate, pos);
+
 
             }
         }
     }
     BuildingPreset GetPreset(TileType tileType)
     {
-        switch (tileType) 
+        switch (tileType)
         {
             case TileType.Residential:
                 return residentialPreset;
@@ -116,7 +152,7 @@ public class MapGenerator : MonoBehaviour
                 return cityCentrePreset;
 
             case TileType.Industrial:
-                return industrialPreset;    
+                return industrialPreset;
 
             case TileType.Grass:
                 return grassPreset;
@@ -125,47 +161,41 @@ public class MapGenerator : MonoBehaviour
                 return grassPreset;
         }
     }
-    IEnumerator Generator()
-    {
-        for (int x = 0; x < mapDataGenerator.width; x++)
-        {
-            for (int y = 0; y < mapDataGenerator.height; y++)
-            {
-                int index = x * mapDataGenerator.width + y;
+    //IEnumerator Generator()
+    //{
+    //    for (int x = 0; x < mapDataGenerator.width; x++)
+    //    {
+    //        for (int y = 0; y < mapDataGenerator.height; y++)
+    //        {
+    //            Vector2 pos = new Vector2(x * spriteRenderer.bounds.size.x, y * spriteRenderer.bounds.size.y);
 
-                if (index < tileTypes.Count)
-                {
-                    Vector2 pos = new Vector2(x * spriteRenderer.bounds.size.x, y * spriteRenderer.bounds.size.y);
+    //            GameObject prefabToInstantiate = GetPreset(tileTypes[x, y]).GetRandomPrefab();
 
-                    GameObject prefabToInstantiate = GetPreset(tileTypes[index]).GetRandomPrefab();
-
-
-
-                    if (prefabToInstantiate != null)
-                    {
-                        Instantiate(prefabToInstantiate, pos, Quaternion.identity);
-                        yield return new WaitForSeconds(0.01f);
-                    }
-                    else
-                        Debug.LogError("Prefab is null");
-                    
-                }
-                else
-                    Debug.LogError("Index too big");
-
-            }
-        }
-    }
-    void InstantiateMapTile(GameObject prefab, Vector2 pos)
+    //            if (prefabToInstantiate != null)
+    //            {
+    //                Instantiate(prefabToInstantiate, pos, Quaternion.identity);
+    //                yield return new WaitForSeconds(0.01f);
+    //            }
+    //            else
+    //                Debug.LogError("Prefab is null");
+    //        }
+    //    }
+    //}
+    GameObject InstantiateMapTile(GameObject prefab, Vector2 pos)
     {
         GameObject prefabToInstantiate = prefab;
-
         if (prefabToInstantiate != null)
         {
             Instantiate(prefabToInstantiate, pos, Quaternion.identity, parent);
+            return prefabToInstantiate;
         }
         else
+        {
             Debug.LogError("Prefab is null, original: " + prefab.name);
+            return null;
+        }
+            
     }
-
 }
+
+

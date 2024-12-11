@@ -14,3 +14,9 @@ public enum RoadType
     Gravel,
     Sand,
 }
+public enum RoadDirection
+{
+    Intersection,
+    Horizontal,
+    Vertical
+}

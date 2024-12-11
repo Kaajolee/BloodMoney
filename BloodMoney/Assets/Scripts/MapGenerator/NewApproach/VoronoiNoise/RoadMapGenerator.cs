@@ -21,7 +21,6 @@ public class RoadMapGenerator : MonoBehaviour
     {
         image = GetComponent<RawImage>();
 
-
         UIEvents.Instance.VoronoiTextureGenerated += GenerateRoadTexture;
     }
 
