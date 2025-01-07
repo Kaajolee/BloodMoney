@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55aa21844ef23a445949fa294be52a5b, type: 3}
   m_Name: FastZombie
   m_EditorClassIdentifier: 
-  movementSpeed: 12
+  movementSpeed: 1.8
   angularSpeed: 1080
-  acceleration: 10
+  acceleration: 5
   attackSpeed: 0
   attackDamage: 35
   maxHealth: 100

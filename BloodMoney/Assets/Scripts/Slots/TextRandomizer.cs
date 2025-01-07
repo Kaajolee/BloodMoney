@@ -1,24 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TextRandomizer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //public TextMeshProUGUI[] textComponents;
-
-    private string[] numbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-
     [SerializeField]
-    private List<Sprite> sprites;
+    private List<Sprite> sprites; // List of slot sprites
     [SerializeField]
-    private List<Image> inGameCasinoSpriteSlots;
-
-
-    private bool isSpinning = false;
+    private List<Image> inGameCasinoSpriteSlots; // Slot images in the UI
 
     [SerializeField]
     private float initialSpeed;
@@ -27,44 +18,54 @@ public class TextRandomizer : MonoBehaviour
     [SerializeField]
     private float spinDuration;
 
+    private int slotsSpinningCount = 0; // Counter for how many slots are still spinning
+
+    private Dictionary<Sprite, int> spriteToNumberMap; // Map sprites to numbers
+    public int[] finalSlotValues; // Stores the resulting slot numbers after spinning
+
+    [SerializeField]
+    private TextMeshProUGUI text;
 
     void Start()
     {
+        // Initialize sprite-to-number mapping
+        spriteToNumberMap = new Dictionary<Sprite, int>();
+        for (int i = 0; i < sprites.Count; i++)
+        {
+            spriteToNumberMap[sprites[i]] = i; // Assign each sprite a unique number
+        }
 
+        finalSlotValues = new int[inGameCasinoSpriteSlots.Count]; // Initialize the results array
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void RandomizeSprites()
     {
-        if (!isSpinning)
+        if (slotsSpinningCount == 0) // Only start if no slots are spinning
         {
-            foreach (var image in inGameCasinoSpriteSlots)
+            slotsSpinningCount = inGameCasinoSpriteSlots.Count; // Set the counter to total slots
+            for (int i = 0; i < inGameCasinoSpriteSlots.Count; i++)
             {
-                StartCoroutine(IconRandomizer(image));
+                StartCoroutine(IconRandomizer(inGameCasinoSpriteSlots[i], i));
             }
 
+            // Notify that the spin has started
             UIEvents.Instance.ButtonClicked();
             GlobalEvents.Instance.SpinClicked();
         }
     }
-    IEnumerator IconRandomizer(Image image)
-    {
-        isSpinning = true;
 
+    IEnumerator IconRandomizer(Image image, int slotIndex)
+    {
+        // Start spinning this slot
         float elapsedTime = 0f;
         float speed = initialSpeed;
 
+        text.text = "Spinning...";
 
-        while (elapsedTime < spinDuration) 
+        while (elapsedTime < spinDuration)
         {
-            image.sprite = sprites[Random.Range(0, sprites.Count)];
-
-            Debug.Log("Sprite ranomized");
-
+            Sprite randomSprite = sprites[Random.Range(0, sprites.Count)];
+            image.sprite = randomSprite; // Randomize the sprite
             yield return new WaitForSeconds(speed);
 
             float progress = elapsedTime / spinDuration;
@@ -73,7 +74,18 @@ public class TextRandomizer : MonoBehaviour
             elapsedTime += speed;
         }
 
-        isSpinning = false;
+        // After spinning, set the final slot value
+        Sprite finalSprite = image.sprite;
+        finalSlotValues[slotIndex] = spriteToNumberMap[finalSprite];
 
+        // Decrement the spinning counter
+        slotsSpinningCount--;
+
+        // Check if all slots have stopped spinning
+        if (slotsSpinningCount == 0)
+        {
+            // Trigger win-lose calculation
+            GlobalEvents.Instance.SpinEnded();
+        }
     }
 }

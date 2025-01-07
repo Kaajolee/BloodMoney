@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55aa21844ef23a445949fa294be52a5b, type: 3}
   m_Name: TankZombie
   m_EditorClassIdentifier: 
-  movementSpeed: 6
+  movementSpeed: 0.5
   angularSpeed: 360
-  acceleration: 3
+  acceleration: 2
   attackSpeed: 0
   attackDamage: 40
   maxHealth: 500

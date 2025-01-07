@@ -21,16 +21,22 @@ ScriptsOnlyBuild:
     - Map
     - MapGenerator
     - MenuManager
+    - OptionsManager
     - PerformanceMonitor
     - PerlinNoiseVisualizer
+    - PlayOnDemand
+    - PlayerDied
     - PlayerHealthController
     - PlayerMovement
     - ReferenceVault
+    - RoadMapGenerator
+    - RoadPreset
     - ShopDataController
     - ShopUIController
     - SoundEvents
     - SpriteAnimator
     - TextRandomizer
+    - Timer
     - TriggerScript
     - UIEvents
     - UILabelUpdate
@@ -140,7 +146,9 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
+    - TMPro.TMP_Dropdown
     - TMPro.TMP_FontAsset
+    - TMPro.TMP_InputField
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
@@ -180,7 +188,13 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.LayoutElement
+    - UnityEngine.UI.Mask
     - UnityEngine.UI.RawImage
+    - UnityEngine.UI.RectMask2D
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Slider
+    - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   serializedClasses:
     Assembly-CSharp:
@@ -205,11 +219,19 @@ ScriptsOnlyBuild:
     - TMPro.FontAssetCreationSettings
     - TMPro.KerningTable
     - TMPro.TMP_Character
+    - TMPro.TMP_Dropdown/DropdownEvent
+    - TMPro.TMP_Dropdown/OptionData
+    - TMPro.TMP_Dropdown/OptionDataList
     - TMPro.TMP_FontFeatureTable
     - TMPro.TMP_FontWeightPair
     - TMPro.TMP_GlyphAdjustmentRecord
     - TMPro.TMP_GlyphPairAdjustmentRecord
     - TMPro.TMP_GlyphValueRecord
+    - TMPro.TMP_InputField/OnChangeEvent
+    - TMPro.TMP_InputField/SelectionEvent
+    - TMPro.TMP_InputField/SubmitEvent
+    - TMPro.TMP_InputField/TextSelectionEvent
+    - TMPro.TMP_InputField/TouchScreenKeyboardEvent
     - TMPro.TMP_Sprite
     - TMPro.TMP_SpriteCharacter
     - TMPro.TMP_SpriteGlyph
@@ -236,15 +258,16 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Navigation
     - UnityEngine.UI.ScrollRect/ScrollRectEvent
     - UnityEngine.UI.Scrollbar/ScrollEvent
+    - UnityEngine.UI.Slider/SliderEvent
     - UnityEngine.UI.SpriteState
     - UnityEngine.UI.Toggle/ToggleEvent
   methodsToPreserve:
   - assembly: Assembly-CSharp
-    fullTypeName: MenuManager
-    methodName: OptionsButtonPressed
+    fullTypeName: OptionsManager
+    methodName: ApplySettings
   - assembly: Assembly-CSharp
     fullTypeName: MenuManager
-    methodName: BackButtonPressed
+    methodName: OptionsButtonPressed
   - assembly: Assembly-CSharp
     fullTypeName: MenuManager
     methodName: BackButtonPressed
@@ -256,10 +279,7 @@ ScriptsOnlyBuild:
     methodName: PlayButtonPressed
   - assembly: Assembly-CSharp
     fullTypeName: MenuManager
-    methodName: PlayButtonPressed
-  - assembly: Assembly-CSharp
-    fullTypeName: TextRandomizer
-    methodName: RandomizeSprites
+    methodName: QuitButtonPressed
   - assembly: Assembly-CSharp
     fullTypeName: MenuManager
     methodName: BackButtonPressed
@@ -312,14 +332,11 @@ ScriptsOnlyBuild:
     fullTypeName: VoronoiNoiseGenerator
     methodName: Regenerate
   - assembly: Assembly-CSharp
+    fullTypeName: PlayerDied
+    methodName: TryAgain
+  - assembly: Assembly-CSharp
     fullTypeName: TextRandomizer
     methodName: RandomizeSprites
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuManager
-    methodName: PlayButtonPressed
-  - assembly: Assembly-CSharp
-    fullTypeName: MenuManager
-    methodName: BackButtonPressed
   - assembly: Assembly-CSharp
     fullTypeName: PlayerMovement
     methodName: MoveUp
@@ -332,6 +349,9 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: PlayerMovement
     methodName: MoveDown
+  - assembly: Assembly-CSharp
+    fullTypeName: PlayerDied
+    methodName: ToMenu
   - assembly: Assembly-CSharp
     fullTypeName: ShopUIController
     methodName: MoveMenuLeftClicked
@@ -351,11 +371,11 @@ ScriptsOnlyBuild:
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
   - assembly: Assembly-CSharp
-    fullTypeName: MenuManager
-    methodName: BackButtonPressed
-  - assembly: Assembly-CSharp
     fullTypeName: ShopUIController
     methodName: BuyButtonClicked
+  - assembly: Assembly-CSharp
+    fullTypeName: RoadMapGenerator
+    methodName: GenerateRoadTexture
   - assembly: Assembly-CSharp
     fullTypeName: ShopUIController
     methodName: SellButtonClicked
@@ -411,6 +431,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1816}
     - Class: 114
+      Script: {instanceID: 1934}
+    - Class: 114
       Script: {instanceID: 2132}
     - Class: 114
       Script: {instanceID: 2540}
@@ -424,6 +446,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 3034}
     - Class: 114
       Script: {instanceID: 3072}
+    - Class: 114
+      Script: {instanceID: 3204}
     - Class: 114
       Script: {instanceID: 3286}
     - Class: 114
@@ -497,6 +521,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9730}
     - Class: 114
+      Script: {instanceID: 10272}
+    - Class: 114
       Script: {instanceID: 10278}
     - Class: 114
       Script: {instanceID: 10304}
@@ -505,33 +531,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10846}
     - Class: 114
-      Script: {instanceID: 11086}
+      Script: {instanceID: 10856}
     - Class: 114
-      Script: {instanceID: 11196}
+      Script: {instanceID: 10998}
     - Class: 114
-      Script: {instanceID: 11320}
+      Script: {instanceID: 11088}
     - Class: 114
-      Script: {instanceID: 11372}
+      Script: {instanceID: 11198}
     - Class: 114
-      Script: {instanceID: 11740}
+      Script: {instanceID: 11322}
     - Class: 114
-      Script: {instanceID: 11754}
+      Script: {instanceID: 11374}
     - Class: 114
-      Script: {instanceID: 11870}
+      Script: {instanceID: 11742}
     - Class: 114
-      Script: {instanceID: 11974}
+      Script: {instanceID: 11756}
     - Class: 114
-      Script: {instanceID: 12052}
+      Script: {instanceID: 11872}
     - Class: 114
-      Script: {instanceID: 12208}
+      Script: {instanceID: 11976}
     - Class: 114
-      Script: {instanceID: 12338}
+      Script: {instanceID: 12054}
     - Class: 114
-      Script: {instanceID: 12858}
+      Script: {instanceID: 12210}
     - Class: 114
-      Script: {instanceID: 13498}
+      Script: {instanceID: 12860}
     - Class: 114
-      Script: {instanceID: 13900}
+      Script: {instanceID: 13500}
+    - Class: 114
+      Script: {instanceID: 13902}
+    - Class: 114
+      Script: {instanceID: 77220}
+    - Class: 114
+      Script: {instanceID: 167956}
+    - Class: 114
+      Script: {instanceID: 232504}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -553,6 +587,12 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     - Class: 238
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
       Script: {instanceID: 0}
     - Class: 156049354
       Script: {instanceID: 0}
@@ -642,8 +682,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6604}
     - Class: 114
-      Script: {instanceID: 7034}
-    - Class: 114
       Script: {instanceID: 7476}
     - Class: 114
       Script: {instanceID: 8458}
@@ -653,6 +691,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 8654}
     - Class: 114
       Script: {instanceID: 8844}
+    - Class: 114
+      Script: {instanceID: 8854}
     - Class: 114
       Script: {instanceID: 9026}
     - Class: 114
@@ -670,35 +710,37 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10488}
     - Class: 114
-      Script: {instanceID: 11148}
+      Script: {instanceID: 11126}
     - Class: 114
-      Script: {instanceID: 11196}
+      Script: {instanceID: 11150}
     - Class: 114
-      Script: {instanceID: 11392}
+      Script: {instanceID: 11198}
     - Class: 114
-      Script: {instanceID: 11674}
+      Script: {instanceID: 11394}
     - Class: 114
-      Script: {instanceID: 11754}
+      Script: {instanceID: 11676}
     - Class: 114
-      Script: {instanceID: 11994}
+      Script: {instanceID: 11996}
     - Class: 114
-      Script: {instanceID: 12128}
+      Script: {instanceID: 12130}
     - Class: 114
-      Script: {instanceID: 12208}
+      Script: {instanceID: 12210}
     - Class: 114
-      Script: {instanceID: 12218}
+      Script: {instanceID: 12220}
     - Class: 114
-      Script: {instanceID: 12306}
+      Script: {instanceID: 12308}
     - Class: 114
-      Script: {instanceID: 12338}
+      Script: {instanceID: 12340}
     - Class: 114
-      Script: {instanceID: 12428}
+      Script: {instanceID: 12430}
     - Class: 114
-      Script: {instanceID: 12580}
+      Script: {instanceID: 12582}
     - Class: 114
-      Script: {instanceID: 12858}
+      Script: {instanceID: 12860}
     - Class: 114
-      Script: {instanceID: 13672}
+      Script: {instanceID: 13674}
+    - Class: 114
+      Script: {instanceID: 37988}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -714,6 +756,12 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -1066,7 +1114,7 @@ ScriptsOnlyBuild:
     className: UnityOnDropdownValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 45426a1645bd0ede281112a3844ccdce
+      Hash: 8b4af658145b5b8d547bcd8dfd017055
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: RoadMapGenerator
@@ -1618,7 +1666,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 1b6a1177ee579da17db0dbb748c1670a
+      Hash: d3e3e55141a73be31afad4638767abe3
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: MapGenerator
@@ -1816,7 +1864,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: f51ba4d121e8f12ddacb03695288d07d
+      Hash: e21c1a9d1a1ffd0af8bf6108610fe72c
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: WinLoseCalculator
@@ -2500,7 +2548,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerEnumHistory
   - hash:
       serializedVersion: 2
-      Hash: 2f08a0e8383a6fbda63e961d38a2502f
+      Hash: e7506332f252ac1943c16e65f78b9198
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: VoronoiNoiseGenerator
@@ -2564,6 +2612,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: BlockDataHolder
+  - hash:
+      serializedVersion: 2
+      Hash: 623d68a8b85bd21a6696f73bbfb6a016
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: RoadPreset
   - hash:
       serializedVersion: 2
       Hash: 3a09ae0a4d0e75b36abda223b76ab1ea
@@ -2722,7 +2776,7 @@ ScriptsOnlyBuild:
     className: CinemachineBrain
   - hash:
       serializedVersion: 2
-      Hash: a2e37959a2d058f8a0b7b1a42253e5ed
+      Hash: 24e21f3011046db74f463670d1783919
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TextRandomizer
@@ -3044,9 +3098,33 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 82684f36d646fb1154ed666a66020579
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: OptionsManager
+  - hash:
+      serializedVersion: 2
+      Hash: 49616fbb5a551f803a9ab1102321c578
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Timer
+  - hash:
+      serializedVersion: 2
+      Hash: 5e33c461bbc95972069034b8c8b3e964
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerDied
+  - hash:
+      serializedVersion: 2
+      Hash: 1ca428aebb2a714752c556d52521acd0
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayOnDemand
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Geimas.unity
-  playerPath: C:/Users/Karolis/Documents/GitHub/BloodMoney/BloodMoney/Builds/For
-    youtube/Bet Your Pulse.exe
+  playerPath: C:/Users/Karolis/Documents/GitHub/BloodMoney/BloodMoney/Builds/Egzas/Bet
+    Your Pulse.exe

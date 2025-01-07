@@ -11,7 +11,7 @@ public class EnemyHealthController : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        
+        GlobalEvents.Instance.NukeExploded += Die;
     }
 
     // Update is called once per frame

@@ -42,18 +42,30 @@ public class PlayerHealthController : MonoBehaviour
         if (health <= 0)
         {
             Die();
+            
         }
 
         globalEvents.HealthChanged();
     }
     public void Die()
     {
+        globalEvents.PlayerDiedOther();
         Debug.Log("Player has died");
     }
     public void GainHealth(float amount)
     {
         health += amount;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+
         Mathf.Clamp(health, 0, maxHealth);
         globalEvents.HealthChanged();
+    }
+    void ResetHealth()
+    {
+
     }
 }

@@ -1,3 +1,4 @@
+using NavMeshPlus.Components;
 using System.Net;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
@@ -33,6 +34,9 @@ public class MapGenerator : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField]
+    private NavMeshSurface aiSurface;
+
     private void Start()
     {
         mapDataGenerator = Map.Instance;
@@ -41,11 +45,14 @@ public class MapGenerator : MonoBehaviour
         GetTiles();
 
         spriteRenderer = residentialPreset.prefabs[0].GetComponent<SpriteRenderer>();
+
+        InstantiatePrefabs();
+        //aiSurface.BuildNavMesh();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            InstantiatePrefabs();
+        //if (Input.GetKeyDown(KeyCode.Space))
+
     }
     void GetTiles()
     {
@@ -183,10 +190,9 @@ public class MapGenerator : MonoBehaviour
     //}
     GameObject InstantiateMapTile(GameObject prefab, Vector2 pos)
     {
-        GameObject prefabToInstantiate = prefab;
-        if (prefabToInstantiate != null)
+        if (prefab != null)
         {
-            Instantiate(prefabToInstantiate, pos, Quaternion.identity, parent);
+            GameObject prefabToInstantiate = Instantiate(prefab, pos, Quaternion.identity, parent);
             return prefabToInstantiate;
         }
         else

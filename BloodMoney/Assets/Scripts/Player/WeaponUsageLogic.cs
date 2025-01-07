@@ -63,6 +63,10 @@ public class WeaponUsageLogic : MonoBehaviour
         {
             UtilityUsage();
         }
+        else if (Input.GetKeyDown(KeyCode.N) && !isMouseOverUI)
+        {
+            SpecialUsage();
+        }
     }
     public void SetWeaponBehaviour(Weapon weaponData)
     {
@@ -114,6 +118,13 @@ public class WeaponUsageLogic : MonoBehaviour
         if (grenadeData != null)
         {
             currentGrenadeBehaviour.Shoot(shootPoint, grenadeData, WeaponSoundPlayer.Instance);
+        }
+    }
+    private void SpecialUsage()
+    {
+        if (specialData != null)
+        {
+            GameObject clone = Instantiate(specialData.bulletPrefab, shootPoint.position, Quaternion.identity);
         }
     }
     bool DetectMouse()

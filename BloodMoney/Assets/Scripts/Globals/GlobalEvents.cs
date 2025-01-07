@@ -24,8 +24,13 @@ public class GlobalEvents : MonoBehaviour
     public delegate void GameEventHandler();
     public event GameEventHandler HealthAmountChanged;
     public event GameEventHandler SlotSpinClicked;
+    public event GameEventHandler SlotSpinEnded;
     public event GameEventHandler EnemyDied;
     public event GameEventHandler EndWave;
+    public event GameEventHandler PlayerIsDeadCasino;
+    public event GameEventHandler PlayerIsDeadOther;
+    public event GameEventHandler Respawn;
+    public event GameEventHandler NukeExploded;
 
     private void Awake()
     {
@@ -40,6 +45,10 @@ public class GlobalEvents : MonoBehaviour
     {
         SlotSpinClicked?.Invoke();
     }
+    public void SpinEnded()
+    {
+        SlotSpinEnded?.Invoke();
+    }
     public void EnemyKilled()
     {
         EnemyDied?.Invoke();
@@ -47,5 +56,21 @@ public class GlobalEvents : MonoBehaviour
     public void WaveEnded()
     {
         EndWave?.Invoke();
+    }
+    public void PlayerDiedCasino()
+    {
+        PlayerIsDeadCasino?.Invoke();
+    }
+    public void PlayerDiedOther()
+    {
+        PlayerIsDeadOther?.Invoke();
+    }
+    public void Reload()
+    {
+        Respawn?.Invoke();
+    }
+    public void NukeBoom()
+    {
+        NukeExploded?.Invoke();
     }
 }

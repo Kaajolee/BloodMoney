@@ -1,87 +1,76 @@
-using System;
 using TMPro;
 using UnityEngine;
 
 public class WinLoseCalculator : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI Slot1, Slot2, Slot3;
+    private TMP_InputField Bet; // Bet input field
+
+    private TextRandomizer textRandomizer;
+
     [SerializeField]
-    private TextMeshProUGUI Bet;
+    private TextMeshProUGUI textMeshPro;
 
     void Start()
     {
-        //GlobalEvents.Instance.SlotSpinClicked += CalculateWinnings;
+        GlobalEvents.Instance.SlotSpinEnded += CalculateWinnings; // Subscribe to the spin event
+        textRandomizer = GetComponent<TextRandomizer>();
     }
-    void ParseNumbers(out int[] values, out int bet)
-    {
-        values = new int[3];
-        bet = 0;
-        try
-        {
-            values[0] = int.Parse(Slot1.text);
-            values[1] = int.Parse(Slot2.text);
-            values[2] = int.Parse(Slot3.text);
 
-            bet = int.Parse(Bet.text);
-        }
-        catch (FormatException)
-        {
-            Debug.LogError("Error parsing slot text/bet text to int");
-            return;
-        }
-    }
-    public void CalculateWinnings()
+    void CalculateWinnings()
     {
-        int[] values;
+        int[] slotValues = textRandomizer.finalSlotValues;
         int bet;
 
-        ParseNumbers(out values, out bet);
-
-        var result = (values[0], values[1], values[2]) switch
+        // Try to parse the bet value
+        if (!int.TryParse(Bet.text, out bet))
         {
-            var (x, y, z) when x == 6 && y == 6 && z == 6 => 0, // 666 pizda
-            var (x, y, z) when x == y && y == z => 5, // jackpot *5
-            var (x, y, z) when x == y - 1 && y == z - 1 => 3, // n+1 *3
-            var (x, y, z) when x == y + 1 && y == z + 1 => 3, // n-1 *3
-            _ => 0,
-        };
-
-        ApplyMultiplier(bet, result);
-    }
-    void ApplyMultiplier(int bet, int multiplier)
-    {
-        switch (multiplier)
-        {
-            case 0:
-                ChangeHealth(bet, multiplier);
-                break;
-
-            case 1:
-                ChangeHealth(bet, multiplier);
-                break;
-
-            case 2:
-                ChangeHealth(bet, multiplier);
-                break;
-
-            case 3:
-                ChangeHealth(bet, multiplier);
-                break;
-
-            case 5:
-                ChangeHealth(bet, multiplier);
-                break;
-
-            default:
-                break;
+            Debug.LogError("Error parsing bet text to int");
+            return;
         }
 
-    }
-    void ChangeHealth(int bet, int multiplier)
-    {
-        int winnings = bet * multiplier;
-        Debug.Log("Won: " + winnings);
-        PlayerHealthController.Instance.GainHealth(winnings);
+        int winnings = 0; // Default winnings
+
+        // Check win conditions
+        if (slotValues[0] == 6 && slotValues[1] == 6 && slotValues[2] == 6)
+        {
+            winnings = 0; // Special case for 666
+            textMeshPro.text = "666! UPS!";
+        }
+        else if (slotValues[0] == slotValues[1] && slotValues[1] == slotValues[2])
+        {
+            winnings = bet * 5; // Jackpot
+            textMeshPro.text = $"Jackpot! You won {winnings}!";
+        }
+        else if (slotValues[0] == slotValues[1] - 1 && slotValues[1] == slotValues[2] - 1)
+        {
+            winnings = bet * 3; // Increment case
+            textMeshPro.text = $"You won {winnings}!";
+        }
+        else if (slotValues[0] == slotValues[1] + 1 && slotValues[1] == slotValues[2] + 1)
+        {
+            winnings = bet * 3; // Decrement case
+            textMeshPro.text = $"You won {winnings}!";
+        }
+        else
+        {
+            winnings = -bet; // Loss case, subtract bet amount from health
+            textMeshPro.text = $"You lost {bet}!";
+        }
+
+        // Apply the result (win or loss)
+        if (winnings >= 0)
+        {
+            PlayerHealthController.Instance.GainHealth(winnings);
+        }
+        else
+        {
+            if (PlayerHealthController.Instance.health + winnings <=0)
+                GlobalEvents.Instance.PlayerDiedCasino();
+            else
+                PlayerHealthController.Instance.GainHealth(winnings);
+        }
+
+        Debug.Log($"Result: {winnings}");
     }
 }

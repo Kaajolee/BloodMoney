@@ -57,5 +57,9 @@ public class MenuManager : MonoBehaviour
         credits.SetActive(true);
         UIEvents.Instance.ButtonClicked();
     }
+    public void QuitButtonPressed()
+    {
+        Application.Quit();
+    }
 
 }

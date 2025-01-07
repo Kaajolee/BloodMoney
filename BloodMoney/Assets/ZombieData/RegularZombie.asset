@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55aa21844ef23a445949fa294be52a5b, type: 3}
   m_Name: RegularZombie
   m_EditorClassIdentifier: 
-  movementSpeed: 8
+  movementSpeed: 0.9
   angularSpeed: 540
-  acceleration: 4
+  acceleration: 2
   attackSpeed: 0
   attackDamage: 20
   maxHealth: 200
